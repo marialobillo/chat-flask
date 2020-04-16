@@ -2,7 +2,8 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate 
 
-from src.models import User
+from models.User import UserModel
+from routes import routes
 
 
 app = Flask(__name__)
@@ -12,18 +13,6 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
 
-
-# Routes
-@app.route('/')
-def hello():
-    return {'hello': 'world'}
-
-@app.route('/users', methods=['POST', 'GET'])
-def handle_users():
-    if request.method == 'POST':
-        if request.is_json:
-            data = request.get_json()
-            new_user = UserModel(username=data['username'], password=data['password'])
 
 
 if __name__ == '__main__':
