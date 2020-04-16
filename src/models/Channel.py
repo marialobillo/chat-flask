@@ -1,7 +1,7 @@
 from app import db
 
 
-class ChannelModel(db.Model):
+class Channel(db.Model):
     __tablename__ = 'channels'
 
     id = db.Column(db.Integer, primary_key=True)

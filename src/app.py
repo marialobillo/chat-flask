@@ -2,7 +2,10 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate 
 
-from models.User import UserModel
+from models import User
+from models import Channel 
+from models import Message 
+
 from routes import routes
 
 
