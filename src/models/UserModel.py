@@ -12,6 +12,9 @@ class UserModel(db.Model):
     created_at = db.Column(db.DateTime)
     modified_at = db.Column(db.DateTime)
 
+    # Relationshipt
+    messages = db.relathionship('MessageModel', backref='users', lazy=True)
+
     def __init__(self, data):
         self.username = data.get('username')
         self.email = data.get('email')
@@ -51,3 +54,14 @@ class UserModel(db.Model):
 
     def __repr(self):
         return '<id {}>'.format(self.id)
+
+
+class UserSchema(Schema):
+    
+    id = fields.Int(dump_only=True)
+    username = fields.Str(required=True)
+    email = fields.Email(required=True)
+    password = fields.Str(required=True)
+    created_at = fields.DateTime(dump_only=True)
+    modified_at = fields.DateTime(dump_only=True)
+    messages = fields.Nested(MessageSchema, many=True)
