@@ -15,7 +15,7 @@ class UserModel(db.Model):
     def __init__(self, data):
         self.username = data.get('username')
         self.email = data.get('email')
-        self.password = data.get('password')
+        self.password = self.__generate_hash(data.get('password'))
         self.created_at = datetime.datetime.utcnow()
         self.modified_at = datetime.datetime.utcnow()
 
@@ -25,6 +25,8 @@ class UserModel(db.Model):
 
     def update(self, data):
         for key, item in data.items():
+            if key == 'password':
+                self.password = self.__generate_hash(value)
             setattr(self, key, item)
         self.modified_at = datetime.datetime.utcnow()
         db.session.commit()
@@ -32,6 +34,12 @@ class UserModel(db.Model):
     def delete(self):
         db.session.delete(self)
         db.session.commit() 
+
+    def __generate_hash(self, password):
+        return bcrypt.generate_password_hash(password, rounds=10).decode("uft-8")
+
+    def check_hash(self, password):
+        return bcrypt.check_password_hash(self.password, password)
 
     @staticmethod
     def get_all_users():
