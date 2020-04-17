@@ -2,9 +2,9 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate 
 
-from models import User
-from models import Channel 
-from models import Message 
+from models import User, Channel, Message
+# from models import Channel 
+# from models import Message 
 
 from routes import routes
 
