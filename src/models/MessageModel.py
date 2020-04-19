@@ -10,10 +10,12 @@ class MessageModel(db.Model):
     created_at = db.Column(db.DateTime)
     modified_at = db.Column(db.DateTime)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    channel_id = db.Column(db.Integer, db.ForeignKey('channels.id'), nullable=False)
 
     def __init__(self, data):
         self.content = data.get('content')
         self.user_id = data.get('user_id')
+        self.channel_id = data.get('channel_id')
         self.created_at = datetime.datetime.utcnow()
         self.modified_at = datetime.datetime.utcnow()
 
@@ -48,5 +50,6 @@ class MessageSchema(Schema):
     id = fields.Int(dump_only=True)
     content = fields.Str(required=True)
     user_id = fields.Int(required=True)
+    channel_id = fields.Int(required=True)
     created_at = fields.DateTime(dump_only=True)
     modified_at = fields.DateTime(dump_only=True)

@@ -1,6 +1,7 @@
 from marshmallow import fields, Schema 
 import datatime 
 from .import db
+from .MessageModel import MessageSchema
 
 class UserModel(db.Model):
     __tablename__ = 'users'
