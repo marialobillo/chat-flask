@@ -1,6 +1,7 @@
 from marshmallow import fields, Schema 
 import datatime 
 from .import db
+from ..app import bcrypt
 from .MessageModel import MessageSchema
 
 class UserModel(db.Model):
