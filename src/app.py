@@ -19,35 +19,17 @@ class UserModel(db.Model):
     created_at = db.Column(db.DateTime)
     modified_at = db.Column(db.DateTime)
 
-    def __init__(self, data):
-        self.username = data.get('name')
-        self.email = data.get('email')
-        self.password = data.get('password')
+    def __init__(self, username, email, password):
+        self.username = username
+        self.email = email
+        self.password = password
         self.created_at = datetime.datetime.utcnow() 
         self.modified_at = datetime.datetime.utcnow()
 
-    def save(self):
-        db.session.add(self)
-        db.session.commit()
+    def __repr__(self):
+        return f"<User {self.username}>"
 
-    def update(self, data):
-        for key, item in data.items():
-            setattr(self, key, item)
-        self.modified_at = datetime.datetime.utcnow() 
-        db.session.commit()
-
-    def delete(self):
-        db.session.delete(self)
-        db.session.commit()
     
-    @staticmethod
-    def get_all_users():
-        return UserModel.query.all()
-
-    @staticmethod
-    def get_one_user(id):
-        return UserModel.query.get(id)
-
 
 class ChannelModel(db.Model):
     __tablename__ = 'channels'
@@ -58,33 +40,35 @@ class ChannelModel(db.Model):
     created_at = db.Column(db.DateTime)
     modified_at = db.Column(db.DateTime)
 
-    def __init__(self, data):
-        self.name = data.get('name')
-        self.description = data.get('description')
+    def __init__(self, name, description):
+        self.name = name
+        self.description = description
         self.created_at = datetime.datetime.utcnow()
         self.modified_at = datetime.datetime.utcnow()
 
-    def save(self):
-        db.session.add(self)
-        db.session.commit()
+    def __repr__(self):
+        return f"<Channel {self.name}>"
 
-    def update(self, data):
-        for key, item in data.items():
-            setattr(self, key, item)
-        self.modified_at = datetime.datetime.utcnow() 
-        db.session.commit() 
+class MessageModel(db.Model):
+    __tablename__ = 'messages'
 
-    def delete(self):
-        db.session.delete(self)
-        db.session.commit() 
+    id = db.Column(db.Integer, primary_key = True)
+    content = db.Column(db.String(), nullable=False)
+    user_id = db.Column(db.Integer)
+    channel_id = db.Column(db.Integer)
+    created_at = db.Column(db.DateTime)
+    modified_at = db.Column(db.DateTime)
 
-    @staticmethod
-    def get_all_channels():
-        return ChannelModel.query.all()
+    def __init__(self, content, user_id, channel_id):
+        self.content = content
+        self.user_id = user_id 
+        self.channel_id = channel_id
+        self.created_at = datetime.datetime.utcnow()
+        self.modified_at = datetime.datetime.utcnow()
 
-    @staticmethod
-    def get_one_channel(id):
-        return ChannelModel.query.get(id)
+    def __repr__(self):
+        return f"<Message {self.content}>"
+
 
 @app.route('/')
 def hello():
