@@ -29,6 +29,11 @@ class User(db.Model):
             'password':self.password
         }
 
+    @staticmethod 
+    def get_user_by_email(value):
+        return User.query.filter_by(email=value).first()
+
+
 
 class Channel(db.Model):
     __tablename__ = 'channels'
@@ -83,4 +88,5 @@ class Message(db.Model):
             'channel_id': self.channel_id,
             'content':self.content
         }
+    
 
