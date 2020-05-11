@@ -1,6 +1,8 @@
 from . import db    
 
 class Channel(db.Model):
+
+    __tablename__ = 'channel'
     
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)

@@ -1,6 +1,8 @@
 from . import db  
 
 class Message(db.Model):
+
+    __tablename__ = 'message'
     
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), 
