@@ -1,13 +1,13 @@
 from flask import Blueprint
-from flask import jsonify
+from .responses import response
 
 api_v1 = Blueprint('api', __name__, url_prefix='/api')
 
 # endpoints for users
 @api_v1.route('/users', methods=['GET'])
 def get_users():
-    return jsonify({
-        'username': 'Maria'
+    return response({
+        'message': 'This is a new message for me'
     })
 
 @api_v1.route('/users/<id>', methods=['GET'])
