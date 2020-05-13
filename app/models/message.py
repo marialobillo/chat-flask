@@ -1,4 +1,5 @@
 from . import db  
+from sqlalchemy.event import listen 
 
 class Message(db.Model):
 
@@ -16,3 +17,17 @@ class Message(db.Model):
 
     def __str__(self):
         return self.content
+
+
+
+def insert_messages(*args, **kwargs):
+    db.session.add(
+        Message(user_id=1, channel_id=1, content='This is the content', created_at='2020-04-05 12:00:00')
+    )
+    db.session.add(
+        Message(user_id=1, channel_id=1, content='This is the 2nd content', created_at='2020-04-05 12:00:00')
+    )
+    db.session.commit()
+
+
+listen(Message.__table__, 'after_create', insert_messages)
