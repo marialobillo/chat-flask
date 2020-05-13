@@ -1,4 +1,6 @@
 from . import db 
+from sqlalchemy.event import listen 
+
 
 class User(db.Model):
 
@@ -13,3 +15,17 @@ class User(db.Model):
 
     def __str__(self):
         return self.username
+
+
+
+def instert_users(*args, **kwargs):
+    db.session.add(
+        User(username='Mery', password='root123', created_at='2020-04-05 12:00:00')
+    )
+    db.session.add(
+        User(username='Jon', password='root123', created_at='2020-05-04 12:00:00')
+    )
+    db.session.commit()
+
+
+listen.(User.__table__, 'after_create', insert_users)
