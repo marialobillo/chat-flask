@@ -18,7 +18,7 @@ class User(db.Model):
 
 
 
-def instert_users(*args, **kwargs):
+def insert_users(*args, **kwargs):
     db.session.add(
         User(username='Mery', password='root123', created_at='2020-04-05 12:00:00')
     )
@@ -28,4 +28,4 @@ def instert_users(*args, **kwargs):
     db.session.commit()
 
 
-listen.(User.__table__, 'after_create', insert_users)
+listen(User.__table__, 'after_create', insert_users)
