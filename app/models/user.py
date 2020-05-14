@@ -12,6 +12,13 @@ class User(db.Model):
     created_at = db.Column(db.DateTime(), nullable=False, 
                 default=db.func.current_timestamp())
 
+    def serialize(self):
+        return {
+            'id': self.id,
+            'username': self.username, 
+            'password': self.password,
+            'created_at': self.created_at
+        }
 
     def __str__(self):
         return self.username

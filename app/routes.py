@@ -10,9 +10,8 @@ api_v1 = Blueprint('api', __name__, url_prefix='/api')
 # endpoints for users
 @api_v1.route('/users', methods=['GET'])
 def get_users():
-    return response({
-        'message': 'This is a new message for me'
-    })
+    users = User.query.all()
+    return response(users)
 
 @api_v1.route('/users/<id>', methods=['GET'])
 def get_user():
@@ -33,7 +32,8 @@ def delete_user():
 # endpoints for channels
 @api_v1.route('/channels', methods=['GET'])
 def get_channels():
-    pass 
+    channels = Channel.query.all()
+    return response(channels) 
 
 @api_v1.route('/channels/<id>', methods=['GET'])
 def get_channel():
@@ -54,7 +54,8 @@ def delete_channel():
 # endpoints for messages
 @api_v1.route('/messages', methods=['GET'])
 def get_messages():
-    pass 
+    messages = Message.query.all()
+    return response(messages) 
 
 @api_v1.route('/messages/<id>', methods=['GET'])
 def get_message():
