@@ -3,7 +3,6 @@ from sqlalchemy.event import listen
 
 
 class User(db.Model):
-
     __tablename__ = 'user'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -11,7 +10,7 @@ class User(db.Model):
     password = db.Column(db.String(255), nullable=False)
     created_at = db.Column(db.DateTime(), nullable=False, 
                 default=db.func.current_timestamp())
-
+    
     def serialize(self):
         return {
             'id': self.id,
