@@ -1,6 +1,10 @@
 from flask import Blueprint
 from .responses import response
 
+from .models.user import User
+from .models.channel import Channel
+from .models.message import Message
+
 api_v1 = Blueprint('api', __name__, url_prefix='/api')
 
 # endpoints for users
