@@ -2,6 +2,7 @@ from flask import request
 from flask import Blueprint
 
 from .responses import response
+from .responses import not_found
 
 from .models.user import User
 from .models.channel import Channel
@@ -18,6 +19,8 @@ def get_users():
 @api_v1.route('/users/<id>', methods=['GET'])
 def get_user(id):
     user = User.query.filter_by(id=id).first()
+    if user is None:
+        return not_found()
     return response(user.serialize())
 
 @api_v1.route('/users', methods=['POST'])
@@ -41,6 +44,8 @@ def get_channels():
 @api_v1.route('/channels/<id>', methods=['GET'])
 def get_channel(id):
     channel = Channel.query.filter_by(id=id).first()
+    if channel is None:
+        return not_found()
     return response(channel.serialize())
 
 @api_v1.route('/channels', methods=['POST'])
@@ -64,6 +69,8 @@ def get_messages():
 @api_v1.route('/messages/<id>', methods=['GET'])
 def get_message(id):
     message = Message.query.filter_by(id=id).first()
+    if message is None:
+        return not_found()
     return response(message.serialize())
 
 @api_v1.route('/messages', methods=['POST'])
