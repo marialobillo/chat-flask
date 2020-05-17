@@ -34,7 +34,10 @@ def create_user():
     if json.get('password') is None:
         return bad_request()
 
-    user = User.new(json['username'], json['password'])
+    if json.get('created_at') is None:
+        return bad_request()
+
+    user = User.new(json['username'], json['password'], json['created_at'])
 
     if user.save():
         return response(user.serialize())

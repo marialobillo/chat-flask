@@ -19,8 +19,9 @@ class User(db.Model):
             'created_at': self.created_at
         }
 
-    def new(cls, username, password):
-        return User(username=username, password=password)
+    @classmethod
+    def new(cls, username, password, created_at):
+        return User(username=username, password=password, created_at=created_at)
 
     def save(self):
         try:

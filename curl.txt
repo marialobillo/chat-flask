@@ -1,0 +1,1 @@
+cURL -i -H "Content-type:applicatin/json" -X POST -d '{"username": "username20", "password": "password20"}' http://127.0.0.1:5000/api/users
