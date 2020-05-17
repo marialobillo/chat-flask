@@ -3,6 +3,7 @@ from flask import Blueprint
 
 from .responses import response
 from .responses import not_found
+from .responses import bad_request
 
 from .models.user import User
 from .models.channel import Channel
@@ -25,7 +26,21 @@ def get_user(id):
 
 @api_v1.route('/users', methods=['POST'])
 def create_user():
-    pass 
+    json = request.get_json(force = True)
+    
+    if json.get('username') is None:
+        return bad_request()
+
+    if json.get('password') is None:
+        return bad_request()
+
+    user = User.new(json['username'], json['password'])
+
+    if user.save():
+        return response(user.serialize())
+
+    return bad_request()
+
 
 @api_v1.route('/users/<id>', methods=['PUT'])
 def update_user():

@@ -19,6 +19,17 @@ class User(db.Model):
             'created_at': self.created_at
         }
 
+    def new(cls, username, password):
+        return User(username=username, password=password)
+
+    def save(self):
+        try:
+            db.session.add(self)
+            db.session.commit()
+            return True
+        except:
+            return False
+
     def __str__(self):
         return self.username
 

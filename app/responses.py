@@ -19,3 +19,11 @@ def not_found():
         }
     ), 404
 
+def bad_request():
+    return jsonify({
+        'success': False, 
+        'data': {},
+        'message': 'Bad Request',
+        'code': 400
+    }), 400
+
