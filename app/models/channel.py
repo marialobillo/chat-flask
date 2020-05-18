@@ -19,6 +19,18 @@ class Channel(db.Model):
             'created_at': self.created_at
         }
 
+    @classmethod
+    def new(cls, name, description, created_at):
+        return Channel(name=name, description=description, created_at=created_at)
+
+    def save(self):
+        try:
+            db.session.add(self)
+            db.session.commit()
+            return True
+        except:
+            return False
+
     def __str__(self):
         return self.name
 

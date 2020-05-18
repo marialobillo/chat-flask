@@ -70,7 +70,7 @@ def get_channel(id):
 def create_channel():
     json = request.get_json(force = True)
     
-    if json.get('name') is None:
+    if json.get('name') is None or len(json.get['name']) > 50:
         return bad_request()
 
     if json.get('description') is None:
