@@ -63,6 +63,7 @@ class TestAPI(unittest.TestCase):
         response = self.client.get(path = new_path, content_type = self.content_type)
         self.assertEqual(response.status_code, 404)
 
+    
 
 
 

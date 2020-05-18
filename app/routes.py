@@ -109,7 +109,27 @@ def get_message(id):
 
 @api_v1.route('/messages', methods=['POST'])
 def create_message():
-    pass 
+    json = request.get_json(force = True)
+    
+    if json.get('user_id') is None:
+        return bad_request()
+
+    if json.get('channel_id') is None:
+        return bad_request()
+
+    if json.get('content') is None:
+        return bad_request()
+
+    if json.get('creacted_at') is None:
+        return bad_request()
+
+
+    message = Message.new(json['user_id'], json['channel_id'], json['content'], json['created_at'])
+
+    if message.save():
+        return response(message.serialize())
+
+    return bad_request()
 
 @api_v1.route('/messages/<id>', methods=['PUT'])
 def update_message():
