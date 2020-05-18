@@ -64,6 +64,8 @@ class TestAPI(unittest.TestCase):
         self.assertEqual(response.status_code, 404)
 
 
+
+
     # tests for messages 
     def test_get_all_messages(self):
         response = self.client.get(path = self.message_path)

@@ -68,7 +68,23 @@ def get_channel(id):
 
 @api_v1.route('/channels', methods=['POST'])
 def create_channel():
-    pass 
+    json = request.get_json(force = True)
+    
+    if json.get('name') is None:
+        return bad_request()
+
+    if json.get('description') is None:
+        return bad_request()
+
+    if json.get('created_at') is None:
+        return bad_request()
+
+    channel = Channel.new(json['name'], json['description'], json['created_at'])
+
+    if channel.save():
+        return response(channel.serialize())
+
+    return bad_request() 
 
 @api_v1.route('/channels/<id>', methods=['PUT'])
 def update_channel():
