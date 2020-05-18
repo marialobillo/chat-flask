@@ -14,8 +14,8 @@ class Channel(db.Model):
     def serialize(self):
         return {
             'id': self.id,
-            'name': self.id,
-            'description': self.id,
+            'name': self.name,
+            'description': self.description,
             'created_at': self.created_at
         }
 
