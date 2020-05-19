@@ -120,7 +120,7 @@ def create_message():
     if json.get('content') is None:
         return bad_request()
 
-    if json.get('creacted_at') is None:
+    if json.get('created_at') is None:
         return bad_request()
 
     message = Message.new(json['user_id'], json['channel_id'], json['content'], json['created_at'])
