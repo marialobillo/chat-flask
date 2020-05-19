@@ -23,6 +23,11 @@ class Message(db.Model):
             'created_at': self.created_at
         }
 
+    @classmethod 
+    def new(cls, user_id, channel_id, content, created_at):
+        return Message(user_id=user_id, channel_id=channel_id, content=content, created_at=created_at)
+
+
     def save(self):
         try:
             db.session.add(self)
