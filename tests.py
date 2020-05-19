@@ -43,6 +43,18 @@ class TestAPI(unittest.TestCase):
         response = self.client.get(path = new_path, content_type = self.content_type)
         self.assertEqual(response.status_code, 404)
 
+    def test_create_user(self):
+        data = {
+            'username': 'Jane', 'password': '123456', 'created_at': 'Sun, 05 Apr 2020 12:00:00 GMT'
+        }
+
+        response = self.client.post(path=self.user_path, data=json.dumps(data), 
+                content_type=self.content_type)
+        self.assertEqual(response.status_code, 200)
+        data = json.loads(response.data.decode('utf-8'))
+        user = data['data']
+        self.assertEqual(user['id'], 3)
+
 
     # tests for channels
     def test_get_all_channels(self):
