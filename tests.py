@@ -75,7 +75,17 @@ class TestAPI(unittest.TestCase):
         response = self.client.get(path = new_path, content_type = self.content_type)
         self.assertEqual(response.status_code, 404)
 
-    
+    def test_create_channel(self):
+        data = {
+            'name': 'PHP', 'description': 'A PHP channel', 'created_at': 'Mon, 18 May 2020 11:00:00 GMT'
+        }
+
+        response = self.client.post(path=self.channel_path, data=json.dumps(data), 
+                content_type=self.content_type)
+        self.assertEqual(response.status_code, 200)
+        data = json.loads(response.data.decode('utf-8'))
+        channel = data['data']
+        self.assertEqual(channel['id'], 3)
 
 
 
@@ -97,6 +107,19 @@ class TestAPI(unittest.TestCase):
         new_path = self.message_path + '/100'
         response = self.client.get(path = new_path, content_type = self.content_type)
         self.assertEqual(response.status_code, 404)
+
+
+    def test_create_message(self):
+        data = {
+            'user_id': 1, 'channel_id': 1, 'content': 'Another message', 'created_at': 'Mon, 18 May 2020 11:00:00 GMT'
+        }
+
+        response = self.client.post(path=self.message_path, data=json.dumps(data), 
+                content_type=self.content_type)
+        self.assertEqual(response.status_code, 200)
+        data = json.loads(response.data.decode('utf-8'))
+        message = data['data']
+        self.assertEqual(message['id'], 3)
 
 if __name__ == '__main__':
     unittest.main()
