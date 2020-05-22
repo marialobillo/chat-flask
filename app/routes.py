@@ -155,8 +155,23 @@ def create_message():
     return bad_request()
 
 @api_v1.route('/messages/<id>', methods=['PUT'])
-def update_message():
-    pass 
+def update_message(id):
+    message = Message.query.filter_by(id=id).first()
+
+    if message is None:
+        return not_found()
+
+    json = request.get_json(force=True)
+    message.user_id = json.get('user_id', message.user_id)
+    message.channel_id = json.get('channel_id', message.channel_id)
+    message.content = json.get('content', message.content)
+    message.created_at = json.get('created_at', message.created_at)
+
+    print(message)
+    if message.save():
+        return response(message.serialize())
+
+    return bad_request()
 
 @api_v1.route('/messages/<id>', methods=['DELETE'])
 def delete_message():
