@@ -55,6 +55,18 @@ class TestAPI(unittest.TestCase):
         user = data['data']
         self.assertEqual(user['id'], 3)
 
+    def test_update_user(self):
+        updated_data = {'password': 'pass123'}
+
+        new_path = self.user_path + '/1'
+        response = self.client.put(path=new_path, data=json.dumps(updated_data),
+                    content_type=self.content_type)
+
+        self.assertEqual(response.status_code, 200)
+        data = json.loads(response.data.decode('utf-8'))
+        password = data['data']['password']
+        self.assertEqual(password, updated_data['password'])
+
 
     # tests for channels
     def test_get_all_channels(self):
