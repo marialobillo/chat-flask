@@ -167,7 +167,6 @@ def update_message(id):
     message.content = json.get('content', message.content)
     message.created_at = json.get('created_at', message.created_at)
 
-    print(message)
     if message.save():
         return response(message.serialize())
 

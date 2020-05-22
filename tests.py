@@ -108,8 +108,8 @@ class TestAPI(unittest.TestCase):
 
         self.assertEqual(response.status_code, 200)
         data = json.loads(response.data.decode('utf-8'))
-        password = data['data']['name']
-        self.assertEqual(password, updated_data['name'])
+        name = data['data']['name']
+        self.assertEqual(name, updated_data['name'])
 
 
 
@@ -144,6 +144,19 @@ class TestAPI(unittest.TestCase):
         data = json.loads(response.data.decode('utf-8'))
         message = data['data']
         self.assertEqual(message['id'], 3)
+
+
+    def test_update_message(self):
+        updated_data = {'content': 'This is a new message'}
+
+        new_path = self.message_path + '/1'
+        response = self.client.put(path=new_path, data=json.dumps(updated_data),
+                    content_type=self.content_type)
+
+        self.assertEqual(response.status_code, 200)
+        data = json.loads(response.data.decode('utf-8'))
+        content = data['data']['content']
+        self.assertEqual(content, updated_data['content'])
 
 if __name__ == '__main__':
     unittest.main()
