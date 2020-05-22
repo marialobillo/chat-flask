@@ -46,9 +46,20 @@ def create_user():
 
 
 @api_v1.route('/users/<id>', methods=['PUT'])
-def update_user():
-    pass 
+def update_user(id):
+    user = User.query.filter_by(id=id).first()
 
+    if user is None:
+        return not_found()
+    json = request.get_json(force=True)
+    user.username = json.get('username', user.username)
+    user.password = json.get('password', user.password)
+    user.created_at = json.get('created_at', user.created_at)
+
+    if user.save():
+        return response(user.serialize())
+
+    return bad_request()
 @api_v1.route('/users/<id>', methods=['DELETE'])
 def delete_user():
     pass
