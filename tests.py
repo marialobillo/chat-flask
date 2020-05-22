@@ -99,6 +99,18 @@ class TestAPI(unittest.TestCase):
         channel = data['data']
         self.assertEqual(channel['id'], 3)
 
+    def test_update_channel(self):
+        updated_data = {'name': 'AWS'}
+
+        new_path = self.channel_path + '/1'
+        response = self.client.put(path=new_path, data=json.dumps(updated_data),
+                    content_type=self.content_type)
+
+        self.assertEqual(response.status_code, 200)
+        data = json.loads(response.data.decode('utf-8'))
+        password = data['data']['name']
+        self.assertEqual(password, updated_data['name'])
+
 
 
     # tests for messages 
