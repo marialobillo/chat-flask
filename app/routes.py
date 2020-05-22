@@ -60,6 +60,7 @@ def update_user(id):
         return response(user.serialize())
 
     return bad_request()
+
 @api_v1.route('/users/<id>', methods=['DELETE'])
 def delete_user():
     pass
@@ -98,8 +99,20 @@ def create_channel():
     return bad_request() 
 
 @api_v1.route('/channels/<id>', methods=['PUT'])
-def update_channel():
-    pass 
+def update_channel(id):
+    channel = Channel.query.filter_by(id=id).first()
+    if channel is None:
+        return not_found()
+
+    json = request.get_json(force=True)
+
+    channel.name = json.get('name', channel.name)
+    channel.description = json.get('description', channel.description)
+    channel.created_at = json.get('created_at', channel.created_at)
+
+    if channel.save():
+        return response(channel.serialize())
+    return bad_request()
 
 @api_v1.route('/channels/<id>', methods=['DELETE'])
 def delete_channel():
