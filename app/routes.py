@@ -187,5 +187,12 @@ def update_message(id):
     return bad_request()
 
 @api_v1.route('/messages/<id>', methods=['DELETE'])
-def delete_message():
-    pass
+def delete_message(id):
+    message = Message.query.filter_by(id=id).first()
+
+    if message is None:
+        return not_found()
+
+    if message.delete():
+        return response(message.serialize())
+    return bad_request()
