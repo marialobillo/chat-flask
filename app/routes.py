@@ -64,8 +64,10 @@ def update_user(id):
 @api_v1.route('/users/<id>', methods=['DELETE'])
 def delete_user(id):
     user = User.query.filter_by(id=id).first()
+
     if user is None:
         return not_found()
+
     if user.delete():
         return response(user.serialize())
     return bad_request()
@@ -120,8 +122,15 @@ def update_channel(id):
     return bad_request()
 
 @api_v1.route('/channels/<id>', methods=['DELETE'])
-def delete_channel():
-    pass
+def delete_channel(id):
+    channel = Channel.query.filter_by(id=id)
+
+    if channel is None:
+        return not_found()
+
+    if channel.delete():
+        return response(channel.serialize())
+    return bad_request()
 
 # endpoints for messages
 @api_v1.route('/messages', methods=['GET'])
