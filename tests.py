@@ -67,6 +67,19 @@ class TestAPI(unittest.TestCase):
         password = data['data']['password']
         self.assertEqual(password, updated_data['password'])
 
+    def test_delete_user(self):
+        new_path = self.user_path + '/1'
+
+        response = self.client.get(path=new_path,
+                                    content_type=self.content_type)
+        self.assertEqual(response.status_code, 200)
+
+        response = self.client.delete(path=new_path,
+                                        content_type=self.content_type)
+        self.assertEqual(response.status_code, 400)
+        
+
+
 
     # tests for channels
     def test_get_all_channels(self):
@@ -110,6 +123,17 @@ class TestAPI(unittest.TestCase):
         data = json.loads(response.data.decode('utf-8'))
         name = data['data']['name']
         self.assertEqual(name, updated_data['name'])
+
+    def test_delete_channel(self):
+        new_path = self.channel_path + '/1'
+
+        response = self.client.get(path=new_path,
+                                    content_type=self.content_type)
+        self.assertEqual(response.status_code, 200)
+
+        response = self.client.delete(path=new_path,
+                                        content_type=self.content_type)
+        self.assertEqual(response.status_code, 400)
 
 
 
@@ -157,6 +181,7 @@ class TestAPI(unittest.TestCase):
         data = json.loads(response.data.decode('utf-8'))
         content = data['data']['content']
         self.assertEqual(content, updated_data['content'])
+
 
 if __name__ == '__main__':
     unittest.main()
