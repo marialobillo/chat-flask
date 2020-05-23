@@ -62,8 +62,13 @@ def update_user(id):
     return bad_request()
 
 @api_v1.route('/users/<id>', methods=['DELETE'])
-def delete_user():
-    pass
+def delete_user(id):
+    user = User.query.filter_by(id=id).first()
+    if user is None:
+        return not_found()
+    if user.delete():
+        return response(user.serialize())
+    return bad_request()
 
 # endpoints for channels
 @api_v1.route('/channels', methods=['GET'])
