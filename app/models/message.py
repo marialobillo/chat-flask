@@ -39,8 +39,8 @@ class Message(db.Model):
     def delete(self):
         try:
             db.session.delete(self)
-            de.session.commit()
-            return True 
+            db.session.commit()
+            return True
         except:
             return False 
 

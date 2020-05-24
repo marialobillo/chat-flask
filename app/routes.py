@@ -123,7 +123,7 @@ def update_channel(id):
 
 @api_v1.route('/channels/<id>', methods=['DELETE'])
 def delete_channel(id):
-    channel = Channel.query.filter_by(id=id)
+    channel = Channel.query.filter_by(id=id).first()
 
     if channel is None:
         return not_found()
@@ -193,6 +193,7 @@ def delete_message(id):
     if message is None:
         return not_found()
 
+    print(message)
     if message.delete():
         return response(message.serialize())
     return bad_request()
