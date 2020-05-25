@@ -27,11 +27,11 @@ const Login = () => {
     }
 
     return (
-        <div className="col-md-7">
-            <div className="container">
+        <div className="text-center">
+            <div className="form-login">
                 <h1>Login</h1>
 
-                <form onSubmit={handleSubmit}>
+                <form className="" onSubmit={handleSubmit}>
                     <div className="form-group">
                         <label htmlFor="username">Username</label>
                         <input 
