@@ -1,6 +1,21 @@
+body{
+  background-color: #2C3E50;
+}
+
+.login-panel{
+  margin: 0 auto;
+  background-color:#FFF;
+  width:100%;
+  max-width: 500px;
+  padding: 20px;
+  margin-top:20px;
+  border-radius: 20px;
+}
+
 .form-login{
   width:100%;
   max-width: 400px;
   padding: 15px;
   margin: auto;
 }
+

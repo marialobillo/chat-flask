@@ -28,10 +28,10 @@ const Login = () => {
 
     return (
         <div className="text-center">
-            <div className="form-login">
+            <div className="login-panel">
                 <h1>Login</h1>
 
-                <form className="" onSubmit={handleSubmit}>
+                <form className="form-login" onSubmit={handleSubmit}>
                     <div className="form-group">
                         <label htmlFor="username">Username</label>
                         <input 
