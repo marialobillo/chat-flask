@@ -24,6 +24,22 @@ def get_user(id):
         return not_found()
     return response(user.serialize())
 
+@api_v1.route('/login', methods=['POST'])
+def get_login():
+    json = request.get_json(force = True)
+
+    if json.get('username') is None:
+        return bad_request()
+    if json.get('password') is None:
+        return bad_request()
+
+    user = User.query.filter_by(username=json.get('username'), password=json.get('password')).first()
+
+    if user is None:
+        return not_found()
+
+    return response(user.serialize()) 
+
 @api_v1.route('/users', methods=['POST'])
 def create_user():
     json = request.get_json(force = True)
