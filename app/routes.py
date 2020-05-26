@@ -53,6 +53,11 @@ def create_user():
     if json.get('created_at') is None:
         return bad_request()
 
+     # the username must be unique
+    user = User.query.filter_by(username=json.get('username')).first()
+    if user is not None:
+        return bad_request()
+
     user = User.new(json['username'], json['password'], json['created_at'])
 
     if user.save():
