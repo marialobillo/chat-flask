@@ -32,6 +32,10 @@ function App() {
     }
   } 
 
+  const logout = () => {
+    setUser(null);
+  }
+
 
   return (
     <Router>
