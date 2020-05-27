@@ -13,7 +13,7 @@ function App() {
   const [user, setUser] = useState(null);
 
   const login = async (username, password) => {
-    const url = 'http:localhost:5000/api/login';
+    const url = 'http://localhost:5000/api/login';
     const { data, success } = await Axios.post(url, { username, password });
     
     if(success){
@@ -21,6 +21,16 @@ function App() {
       console.log(user);
     }
   }
+
+  const register = async (username, password) => {
+    const url = 'http://localhost:5000/api/users';
+    const { data, success} = await Axios.post(url, {username, password})
+  
+    if(success){
+      setUser(data);
+      console.log(user);
+    }
+  } 
 
 
   return (
