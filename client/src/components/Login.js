@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
+import Axios from 'axios';
 
 const Login = () => {
 
@@ -18,10 +19,17 @@ const Login = () => {
         })
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault()
-
-        // validation
+        const url = 'http://localhost:5000/api/login';
+        console.log(user);
+        try {
+           const {data, success} = await Axios.post(url, user);
+           console.log(data.data);
+           console.log(data.success);
+        } catch (error) {
+            console.log(error);
+        }
 
 
     }

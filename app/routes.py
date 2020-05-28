@@ -11,6 +11,7 @@ from .models.message import Message
 
 api_v1 = Blueprint('api', __name__, url_prefix='/api')
 
+
 # endpoints for users
 @api_v1.route('/users', methods=['GET'])
 def get_users():
