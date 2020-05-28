@@ -51,15 +51,16 @@ def create_user():
     if json.get('password') is None:
         return bad_request()
 
-    if json.get('created_at') is None:
-        return bad_request()
+    # if json.get('created_at') is None:
+    #     return bad_request()
+    #created_at = 
 
      # the username must be unique
     user = User.query.filter_by(username=json.get('username')).first()
     if user is not None:
         return bad_request()
 
-    user = User.new(json['username'], json['password'], json['created_at'])
+    user = User.new(json['username'], json['password'])
 
     if user.save():
         return response(user.serialize())

@@ -20,8 +20,8 @@ class User(db.Model):
         }
 
     @classmethod
-    def new(cls, username, password, created_at):
-        return User(username=username, password=password, created_at=created_at)
+    def new(cls, username, password):
+        return User(username=username, password=password)
 
     def save(self):
         try:

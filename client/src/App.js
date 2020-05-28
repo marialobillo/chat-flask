@@ -35,8 +35,8 @@ function App() {
 
   return (
     <div className="">
-      <Login login={login} />
-
+      {/* <Login login={login} /> */}
+      <Register register={register} />
       <div>{JSON.stringify(user)}</div>
     </div>
     

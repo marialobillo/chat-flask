@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
+import Axios from 'axios';
 
-const Login = () => {
+const Register = ({ register }) => {
 
     // state
     const [user, setUser] = useState({
@@ -22,7 +23,11 @@ const Login = () => {
     const handleSubmit = (event) => {
         event.preventDefault()
 
-        // validation
+        try {
+            register(user.username, user.password);
+        } catch (error) {
+            console.log(error);
+        }
 
 
     }
@@ -78,12 +83,12 @@ const Login = () => {
                     </div>
                 </form>
 
-                <Link to={'/'} className="">
+                {/* <Link to={'/'} className="">
                     Login
-                </Link>
+                </Link> */}
             </div>
         </div>
     );
 }
 
-export default Login;
+export default Register;
