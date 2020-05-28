@@ -15,22 +15,17 @@ function App() {
 
   const login = async (username, password) => {
     const url = 'http://localhost:5000/api/login';
-    const { data } = await Axios.post(url, { username, password });
+    const { data } = await Axios.post(url, {username, password});
     
-    if(success){
-      setUser(data.user)
-      console.log(user);
-    }
+    setUser(data.user);
   }
 
   const register = async (username, password) => {
     const url = 'http://localhost:5000/api/users';
-    const { data, success} = await Axios.post(url, {username, password})
+    const { data } = await Axios.post(url, {username, password})
   
-    if(success){
-      setUser(data);
-      console.log(user);
-    }
+    setUser(data.user);
+     
   } 
 
   const logout = () => {
@@ -39,14 +34,21 @@ function App() {
 
 
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/" component={Login} />
-        <Route exact path="/register" component={Register} />
-        <Route exact path="/chat" component={Chat} />
-      </Switch>
-    </Router>
+    <div className="">
+      <Login login={login} />
+
+      <div>{JSON.stringify(user)}</div>
+    </div>
+    
   );
 }
 
 export default App;
+
+// <Router>
+    //   <Switch>
+    //     <Route exact path="/" component={Login} />
+    //     <Route exact path="/register" component={Register} />
+    //     <Route exact path="/chat" component={Chat} />
+    //   </Switch>
+    // </Router>

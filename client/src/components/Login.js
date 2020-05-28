@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
 import Axios from 'axios';
 
-const Login = () => {
+const Login = ({ login }) => {
 
     // state
     const [user, setUser] = useState({
@@ -19,19 +19,13 @@ const Login = () => {
         })
     }
 
-    const handleSubmit = async (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault()
-        const url = 'http://localhost:5000/api/login';
-        console.log(user);
         try {
-           const {data} = await Axios.post(url, user);
-           console.log(data.data);
-           console.log(data.success);
+            login(user.username, user.password);        
         } catch (error) {
             console.log(error);
         }
-
-
     }
 
     return (
@@ -72,9 +66,9 @@ const Login = () => {
                     </div>
                 </form>
 
-                <Link to={'/register'} className="">
+                {/* <Link to={'/register'} className="">
                     Create an Account
-                </Link>
+                </Link> */}
             </div>
         </div>
     );
