@@ -24,7 +24,7 @@ const Login = () => {
         const url = 'http://localhost:5000/api/login';
         console.log(user);
         try {
-           const {data, success} = await Axios.post(url, user);
+           const {data} = await Axios.post(url, user);
            console.log(data.data);
            console.log(data.success);
         } catch (error) {

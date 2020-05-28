@@ -15,10 +15,10 @@ function App() {
 
   const login = async (username, password) => {
     const url = 'http://localhost:5000/api/login';
-    const { data, success } = await Axios.post(url, { username, password });
+    const { data } = await Axios.post(url, { username, password });
     
     if(success){
-      setUser(data)
+      setUser(data.user)
       console.log(user);
     }
   }
