@@ -22,7 +22,9 @@ const Register = ({ register }) => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-
+        if(user.password != user.confirm){
+            return;
+        }
         try {
             register(user.username, user.password);
         } catch (error) {
@@ -68,8 +70,8 @@ const Register = ({ register }) => {
                         <input 
                             type="password"
                             className="form-control"
-                            id="password"
-                            name="password"
+                            id="confirm"
+                            name="confirm"
                             placeholder="Confirm Your password"
                             onChange={handleChange}
                             value={confirm}
