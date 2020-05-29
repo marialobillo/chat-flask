@@ -23,9 +23,8 @@ function App() {
   const register = async (username, password) => {
     const url = 'http://localhost:5000/api/users';
     const { data } = await Axios.post(url, {username, password})
-    console.log('register en App', user);
+    
     setUser(data.data);
-    console.log('el user despues de register', user);
      
   } 
 
