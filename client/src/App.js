@@ -8,7 +8,7 @@ import Register from './components/Register';
 import Chat from './components/Chat';
 
 
-function App() {
+export default function App() {
 
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
@@ -35,15 +35,14 @@ function App() {
 
   return (
     <div className="">
-      {/* <Login login={login} /> */}
-      <Register register={register} />
+      <Login login={login} />
+      {/* <Register register={register} /> */}
       <div>{JSON.stringify(user)}</div>
     </div>
     
   );
 }
 
-export default App;
 
 // <Router>
     //   <Switch>
