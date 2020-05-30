@@ -22,7 +22,7 @@ export default function App() {
 
   const register = async (username, password) => {
     const url = 'http://localhost:5000/api/users';
-    const { data } = await Axios.post(url, {username, password})
+    const { data } = await Axios.post(url, {username, password});
     
     setUser(data.data);
      
@@ -34,12 +34,30 @@ export default function App() {
 
 
   return (
-    <div className="">
-      <Login login={login} />
-      {/* <Register register={register} /> */}
+    <Router>
+      <LogoutRoutes login={login} register={register} />
       <div>{JSON.stringify(user)}</div>
-    </div>
+    </Router>
     
+  );
+}
+
+function LoginRoutes(){
+
+}
+
+function LogoutRoutes({login, register}){
+  return (
+    <Switch>
+        <Route 
+        path='/register'
+        render={(props) => <Register {...props}  register={register}/>}>
+      </Route>
+      <Route 
+        render={(props) => <Login {...props} login={login} />}>
+      </Route>
+    
+    </Switch>
   );
 }
 
