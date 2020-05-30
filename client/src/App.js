@@ -49,14 +49,13 @@ function LoginRoutes(){
 function LogoutRoutes({login, register}){
   return (
     <Switch>
-        <Route 
-        path='/register'
-        render={(props) => <Register {...props}  register={register}/>}>
-      </Route>
       <Route 
+        path='/login'
         render={(props) => <Login {...props} login={login} />}>
       </Route>
-    
+      <Route 
+        render={(props) => <Register {...props}  register={register} default />}>
+      </Route>    
     </Switch>
   );
 }

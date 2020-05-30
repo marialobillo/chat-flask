@@ -84,9 +84,12 @@ const Register = ({ register }) => {
                     </div>
                 </form>
 
-                {/* <Link to={'/'} className="">
-                    Login
-                </Link> */}
+                <p>
+                    Do you already have an account?&nbsp; 
+                    <Link to={'/login'} className="">
+                        Login
+                    </Link>     
+                </p>              
             </div>
         </div>
     );
