@@ -35,7 +35,11 @@ export default function App() {
 
   return (
     <Router>
-      <LogoutRoutes login={login} register={register} />
+      { user ? 
+        (<LoginRoutes />) 
+      : 
+        (<LogoutRoutes login={login} register={register}/>)
+      }
       <div>{JSON.stringify(user)}</div>
     </Router>
     
@@ -43,7 +47,15 @@ export default function App() {
 }
 
 function LoginRoutes(){
-
+  return (
+    <Switch>
+      <Route 
+        path='/'
+        component={() => <div><h1>Soy el feed</h1></div>}
+        default
+        />        
+    </Switch>
+  );
 }
 
 function LogoutRoutes({login, register}){
@@ -51,10 +63,12 @@ function LogoutRoutes({login, register}){
     <Switch>
       <Route 
         path='/login'
-        render={(props) => <Login {...props} login={login} />}>
+        render={(props) => <Login {...props} 
+        login={login} />}>
       </Route>
       <Route 
-        render={(props) => <Register {...props}  register={register} default />}>
+        render={(props) => <Register {...props}  
+        register={register} default />}>
       </Route>    
     </Switch>
   );
