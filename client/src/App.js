@@ -67,8 +67,7 @@ function LoginRoutes({getChannels, channels}){
       <Route 
         path='/'
         render={(props) => <Chat {...props} 
-        getChannels={getChannels}/>}>
-        channels={channels}
+        getChannels={getChannels} channels={channels}/>}>
         </Route>
               
     </Switch>

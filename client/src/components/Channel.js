@@ -5,7 +5,7 @@ const Channel = ({channel}) => {
         <div className="">
                         <h2>Channel</h2>
 
-            {channel.name}
+            {/* {channel.name} */}
         </div>
     );
 }
