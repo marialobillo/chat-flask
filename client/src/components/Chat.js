@@ -1,9 +1,13 @@
 import React from 'react';
+import ChannelList from './ChannelList';
 
-const Chat = () => {
+const Chat = ({getChannels, channels}) => {
+
+    
     return(
         <div className="">
-            Chat
+            <h2>Chat</h2>
+            <ChannelList channels={channels} />
         </div>
 
     )

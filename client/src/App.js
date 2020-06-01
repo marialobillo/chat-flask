@@ -13,6 +13,7 @@ export default function App() {
 
   const [user, setUser] = useState(null);
   const [error, setError] = useState('no pude cargar feed');
+  const [channels, setChannels] = useState([]);
 
   const login = async (username, password) => {
     const url = 'http://localhost:5000/api/login';
@@ -29,6 +30,13 @@ export default function App() {
      
   } 
 
+  const getChannels = async () => {
+    const url = 'http://localhost:5000/api/channels';
+    const { data } = await Axios.get(url);
+
+    setChannels(data.data);
+  }
+
   const logout = () => {
     setUser(null);
   }
@@ -43,7 +51,7 @@ export default function App() {
 
  
       { user ? 
-        (<LoginRoutes />) 
+        (<LoginRoutes channels={channels}/>) 
       : 
         (<LogoutRoutes login={login} register={register}/>)
       }
@@ -53,14 +61,16 @@ export default function App() {
   );
 }
 
-function LoginRoutes(){
+function LoginRoutes({getChannels, channels}){
   return (
     <Switch>
       <Route 
         path='/'
-        render={(props) => <Chat />}
-        default
-        />        
+        render={(props) => <Chat {...props} 
+        getChannels={getChannels}/>}>
+        channels={channels}
+        </Route>
+              
     </Switch>
   );
 }
