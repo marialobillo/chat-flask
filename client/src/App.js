@@ -35,6 +35,7 @@ export default function App() {
     const { data } = await Axios.get(url);
 
     setChannels(data.data);
+    console.log('channels en app', channels);
   }
 
   const logout = () => {
