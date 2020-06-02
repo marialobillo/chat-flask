@@ -1,15 +1,15 @@
 import React from 'react';
 import Channel from './Channel';
 
-const ChannelList = ({channelList}) => {
-    console.log(channelList)
+const ChannelList = ({channels}) => {
+    console.log('En channel list', channels);
     return (
         <div>
             <h2>Chanel List</h2>
 
-            {/* {channelList.map(channel => (
+            {channels.map(channel => (
                 <Channel channel={channel} />
-            ))} */}
+            ))}
         </div>
     );
 }
