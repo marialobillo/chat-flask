@@ -38,6 +38,7 @@ export default function App() {
     console.log('channels en app', channels);
   }
 
+ 
   const logout = () => {
     setUser(null);
   }
@@ -46,13 +47,15 @@ export default function App() {
     setError(message);
   }
 
+  getChannels();
+
 
   return (
     <Router>
 
  
       { user ? 
-        (<LoginRoutes channels={channels}/>) 
+        (<LoginRoutes channels={channels} />) 
       : 
         (<LogoutRoutes login={login} register={register}/>)
       }
@@ -62,13 +65,13 @@ export default function App() {
   );
 }
 
-function LoginRoutes({getChannels, channels}){
+function LoginRoutes({ channels}){
   return (
     <Switch>
       <Route 
         path='/'
         render={(props) => <Chat {...props} 
-        getChannels={getChannels} channels={channels}/>}>
+         channels={channels}/>}>
         </Route>
               
     </Switch>
