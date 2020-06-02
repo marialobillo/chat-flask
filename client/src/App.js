@@ -5,7 +5,7 @@ import Axios from 'axios';
 
 import Login from './components/Login';
 import Register from './components/Register';
-import Chat from './components/Chat';
+import Dashboard from './components/Dashboard';
 // import Error from './components/Error';
 
 
@@ -13,7 +13,6 @@ export default function App() {
 
   const [user, setUser] = useState(null);
   const [error, setError] = useState('no pude cargar feed');
-  const [channels, setChannels] = useState([]);
 
   const login = async (username, password) => {
     const url = 'http://localhost:5000/api/login';
@@ -30,13 +29,7 @@ export default function App() {
      
   } 
 
-  const getChannels = async () => {
-    const url = 'http://localhost:5000/api/channels';
-    const { data } = await Axios.get(url);
-
-    setChannels(data.data);
-    console.log('channels en app', channels);
-  }
+ 
 
  
   const logout = () => {
@@ -47,7 +40,7 @@ export default function App() {
     setError(message);
   }
 
-  getChannels();
+  
 
 
   return (
@@ -55,7 +48,7 @@ export default function App() {
 
  
       { user ? 
-        (<LoginRoutes channels={channels} />) 
+        (<LoginRoutes user={user} />) 
       : 
         (<LogoutRoutes login={login} register={register}/>)
       }
@@ -70,7 +63,7 @@ function LoginRoutes({ channels}){
     <Switch>
       <Route 
         path='/'
-        render={(props) => <Chat {...props} 
+        render={(props) => <Dashboard {...props} 
          channels={channels}/>}>
         </Route>
               
