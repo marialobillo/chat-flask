@@ -2,13 +2,13 @@ import React from 'react';
 import Channel from './Channel';
 
 const ChannelList = ({channels}) => {
-    console.log('En channel list', channels);
+    
     return (
-        <div>
-            <h2>Chanel List</h2>
+        <div className="login-panel">
+            <h4>Channels</h4>
 
             {channels.map(channel => (
-                <Channel channel={channel} />
+                <Channel key={channel.id} channel={channel} />
             ))}
         </div>
     );

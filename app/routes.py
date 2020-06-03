@@ -168,6 +168,14 @@ def get_message(id):
         return not_found()
     return response(message.serialize())
 
+@api_v1.route('/bychannel/<channel_id>', methods=['GET'])
+def get_messages_by_channel(channel_id):
+    messages = Message.query.filter_by(channel_id=channel_id)
+    if messages is None:
+        return not_found()
+    return response([message.serialize() for message in messages])
+
+
 @api_v1.route('/messages', methods=['POST'])
 def create_message():
     json = request.get_json(force = True)

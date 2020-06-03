@@ -20,8 +20,8 @@ const Dashboard = () => {
     
 
     return(
-        <div className="">
-            <h2>Here the Chat</h2>
+        <div className="container">
+            <h2 className="text-center">Chat</h2>
             <ChannelList channels={channels}  />
         </div>
 
