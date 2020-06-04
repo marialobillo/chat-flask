@@ -15,8 +15,10 @@ const Channel = ({channel}) => {
         
     }
     return (
-        <div className="btn btn-info" onClick={() => handleClick(channel.id)}>
-            #{channel.name}
+        <div className="btn btn-info" >
+            <div className="btn btn-info" onClick={() => handleClick(channel.id)}>
+                #{channel.name}
+            </div>
 
             <Room messages={messages}/>
         </div>
