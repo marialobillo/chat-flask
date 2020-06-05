@@ -21,6 +21,7 @@ const Dashboard = () => {
     }, []);
 
     const getMessages = async (channel_id) => {
+
         const url = 'http://localhost:5000/api/bychannel/' + channel_id ;
         const { data } = await Axios.get(url); 
 
@@ -31,12 +32,14 @@ const Dashboard = () => {
 
     }
     
-
     return(
         <div className="container">
             <h2 className="text-center">Chat</h2>
-            <ChannelList channels={channels}  />
-            <Messages />
+            <ChannelList 
+                channels={channels}  
+                setCurrentChannel={setCurrentChannel}
+            />
+            {/* <Messages /> */}
         </div>
 
     )

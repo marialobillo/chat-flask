@@ -7,11 +7,16 @@ const Channel = ({channel, setCurrentChannel}) => {
     const handleClick = async (channel_id) => {
         
         setCurrentChannel(channel_id)
+
+        console.log('the channel current', channel_id)
         
     }
     return (
         <div className="btn btn-info" >
-            <div className="btn btn-info" onClick={() => handleClick(channel.id)}>
+            <div 
+                className="btn btn-info" 
+                onClick={() => handleClick(channel.id)}
+            >
                 #{channel.name}
             </div>
 
