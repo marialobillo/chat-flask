@@ -1,17 +1,12 @@
 import React, { useState } from 'react';
-import Axios from 'axios';
-import Room from './Room';
 
-const Channel = ({channel}) => {
+const Channel = ({channel, setCurrentChannel}) => {
 
-    const [messages, setMessages] = useState([]);
+    
 
-    const handleClick = async (id) => {
-        setMessages([]);
-        const url = 'http://localhost:5000/api/bychannel/' + id ;
-        const { data } = await Axios.get(url);
-
-        setMessages(data.data);
+    const handleClick = async (channel_id) => {
+        
+        setCurrentChannel(channel_id)
         
     }
     return (
@@ -20,7 +15,6 @@ const Channel = ({channel}) => {
                 #{channel.name}
             </div>
 
-            <Room messages={messages}/>
         </div>
     );
 }
