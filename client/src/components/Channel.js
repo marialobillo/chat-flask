@@ -4,11 +4,9 @@ const Channel = ({channel, setCurrentChannel}) => {
 
     
 
-    const handleClick = async (channel_id) => {
+    const handleClick = (channel_id) => {
         
         setCurrentChannel(channel_id)
-
-        console.log('the channel current', channel_id)
         
     }
     return (

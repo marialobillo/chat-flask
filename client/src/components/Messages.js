@@ -1,7 +1,8 @@
 import React from 'react';
 
-const Room = ({messages}) => {
+const Messages = ({messages}) => {
 
+    console.log('en Messages', messages)
     return (
         <div>
             {messages.map(message => (
@@ -13,4 +14,4 @@ const Room = ({messages}) => {
     );
 }
 
-export default Room;
+export default Messages;

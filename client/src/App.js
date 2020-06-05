@@ -18,6 +18,7 @@ export default function App() {
     const url = 'http://localhost:5000/api/login';
     const { data } = await Axios.post(url, {username, password});
     
+    console.log(data)
     setUser(data.data);
   }
 
@@ -88,10 +89,3 @@ function LogoutRoutes({login, register}){
 }
 
 
-// <Router>
-    //   <Switch>
-    //     <Route exact path="/" component={Login} />
-    //     <Route exact path="/register" component={Register} />
-    //     <Route exact path="/chat" component={Chat} />
-    //   </Switch>
-    // </Router>

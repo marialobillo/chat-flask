@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import ChannelList from './ChannelList';
+import Messages from './Messages';
 
 const Dashboard = () => {
 
@@ -14,23 +15,26 @@ const Dashboard = () => {
             const { data } = await Axios.get(url);
         
             setChannels(data.data);
-            console.log('channels en dashboard', data.data);
+        }
+
+        const getMessages = async () => {
+
+            if(currentChannel){
+                const url = 'http://localhost:5000/api/bychannel/' + currentChannel ;
+                const { data } = await Axios.get(url);  
+                setMessages(data.data);   
+            }
+    
         }
 
         loadChannels();
+
+        getMessages();
+        
     }, []);
 
-    const getMessages = async (channel_id) => {
+    
 
-        const url = 'http://localhost:5000/api/bychannel/' + channel_id ;
-        const { data } = await Axios.get(url); 
-
-        setMessages(data.data);
-    }
-
-    const selectChannel = () => {
-
-    }
     
     return(
         <div className="container">
@@ -39,7 +43,8 @@ const Dashboard = () => {
                 channels={channels}  
                 setCurrentChannel={setCurrentChannel}
             />
-            {/* <Messages /> */}
+            {console.log('DASHBOARD', currentChannel)}
+            {currentChannel ? <Messages messages={messages}/> : null}
         </div>
 
     )
