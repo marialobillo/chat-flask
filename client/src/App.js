@@ -17,7 +17,6 @@ export default function App() {
     const url = 'http://localhost:5000/api/login';
     const { data } = await Axios.post(url, {username, password});
     
-    console.log(data)
     setUser(data.data);
   }
 
@@ -26,7 +25,6 @@ export default function App() {
     const { data } = await Axios.post(url, {username, password});
     
     setUser(data.data);
-     
   } 
 
  

@@ -1,13 +1,7 @@
 import React, { useState } from 'react';
 
-const Channel = ({channel}) => {
+const Channel = ({channel, handleClick}) => {
 
-    console.log('llegamos al channel single')
-
-    const handleClick = (channel_id) => {
-        
-        
-    }
     return (
         <div className="container" >
             <div 

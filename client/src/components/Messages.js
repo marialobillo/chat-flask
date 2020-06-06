@@ -2,7 +2,6 @@ import React from 'react';
 
 const Messages = ({messages}) => {
 
-    console.log('en Messages', messages)
     return (
         <div>
             {messages.map(message => (
