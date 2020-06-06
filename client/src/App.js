@@ -3,6 +3,7 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Axios from 'axios';
 
+import Navbar from './components/Navbar';
 import Login from './components/Login';
 import Register from './components/Register';
 import Dashboard from './components/Dashboard';
@@ -31,8 +32,6 @@ export default function App() {
   } 
 
  
-
- 
   const logout = () => {
     setUser(null);
   }
@@ -46,28 +45,28 @@ export default function App() {
 
   return (
     <Router>
-
+      
  
       { user ? 
         (<LoginRoutes user={user} />) 
       : 
         (<LogoutRoutes login={login} register={register}/>)
       }
+     
       <div>{JSON.stringify(user)}</div>
     </Router>
     
   );
 }
 
-function LoginRoutes({ channels}){
+function LoginRoutes({ user }){
   return (
     <Switch>
       <Route 
         path='/'
         render={(props) => <Dashboard {...props} 
-         channels={channels}/>}>
-        </Route>
-              
+         user={user}/>}>
+        </Route>            
     </Switch>
   );
 }

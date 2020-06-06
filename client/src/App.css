@@ -19,3 +19,27 @@ body{
   margin: auto;
 }
 
+.channel-panel{
+  float: left;
+  margin: 0 20px;
+  background-color:#FFF;
+  width:100%;
+  max-width: 300px;
+  padding: 20px;
+  margin-top:20px;
+  border-radius: 15px;
+}
+
+.channel-list{
+  list-style: none;
+}
+
+.channel-item{
+  border: none;
+}
+
+.channel-item:hover{
+  background-color: black;
+  font: white;
+}
+

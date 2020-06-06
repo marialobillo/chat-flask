@@ -2,9 +2,11 @@ import React from 'react';
 
 const Header = () => {
     return(
-        <nav class="navbar navbar-dark bg-primary">
-            <div className="row col-12 d-flex justify-content-center text-white">
-            <span className="h3">Register</span>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <a className="navbar-brand">Chat</a>
+           
+            <div className="nav-item">
+                <a className="right">Logout</a>
             </div>
         </nav>
     )

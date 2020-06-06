@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
-import ChannelList from './ChannelList';
-import Messages from './Messages';
+import Channels from './Channels';
+import Navbar from './Navbar';
+// import Messages from './Messages';
 
 const Dashboard = () => {
 
     const [channels, setChannels] = useState([]);
-    const [messages, setMessages] = useState([]);
-    const [currentChannel, setCurrentChannel] = useState(null);
-
+    
     useEffect( () => {
         const loadChannels = async () => {
             const url = 'http://localhost:5000/api/channels';
@@ -17,19 +16,19 @@ const Dashboard = () => {
             setChannels(data.data);
         }
 
-        const getMessages = async () => {
+        // const getMessages = async () => {
 
-            if(currentChannel){
-                const url = 'http://localhost:5000/api/bychannel/' + currentChannel ;
-                const { data } = await Axios.get(url);  
-                setMessages(data.data);   
-            }
+        //     if(currentChannel){
+        //         const url = 'http://localhost:5000/api/bychannel/' + currentChannel ;
+        //         const { data } = await Axios.get(url);  
+        //         setMessages(data.data);   
+        //     }
     
-        }
+        // }
 
         loadChannels();
 
-        getMessages();
+        // getMessages();
         
     }, []);
 
@@ -37,14 +36,15 @@ const Dashboard = () => {
 
     
     return(
-        <div className="container">
-            <h2 className="text-center">Chat</h2>
-            <ChannelList 
-                channels={channels}  
-                setCurrentChannel={setCurrentChannel}
-            />
-            {console.log('DASHBOARD', currentChannel)}
-            {currentChannel ? <Messages messages={messages}/> : null}
+        <div className="">
+            <Navbar />
+            
+            <aside>
+                <Channels channels={channels}  />
+            </aside>
+            
+        
+            
         </div>
 
     )
