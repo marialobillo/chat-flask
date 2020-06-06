@@ -9,9 +9,8 @@ const Channels = ({channels}) => {
 
             <ul className="">
             {channels.map(channel => (
-                <li>
+                <li className="channel-item" key={channel.id}>
                     <Channel 
-                        key={channel.id} 
                         channel={channel} 
                     />
                 </li>

@@ -35,11 +35,6 @@ body{
 }
 
 .channel-item{
-  border: none;
-}
-
-.channel-item:hover{
-  background-color: black;
-  font: white;
+  list-style: none;
 }
 
