@@ -39,7 +39,7 @@ const Dashboard = () => {
         <div className="">
             <Navbar />
             
-            <aside>
+            <aside className="container">
                 <Channels channels={channels}  />
             </aside>
             

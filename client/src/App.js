@@ -11,7 +11,7 @@ import Dashboard from './components/Dashboard';
 export default function App() {
 
   const [user, setUser] = useState(null);
-  const [error, setError] = useState('no pude cargar feed');
+  // const [error, setError] = useState('no pude cargar feed');
 
   const login = async (username, password) => {
     const url = 'http://localhost:5000/api/login';
@@ -34,9 +34,9 @@ export default function App() {
     setUser(null);
   }
 
-  const showError = (message) => {
-    setError(message);
-  }
+  // const showError = (message) => {
+  //   setError(message);
+  // }
 
   
 

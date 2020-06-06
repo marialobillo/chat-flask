@@ -21,7 +21,7 @@ const Register = ({ register }) => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        if(user.password != user.confirm){
+        if(user.password !== user.confirm){
             return;
         }
         try {

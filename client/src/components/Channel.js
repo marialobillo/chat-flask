@@ -10,13 +10,14 @@ const Channel = ({channel}) => {
     }
     return (
         <div className="container" >
-            <span 
+            <div 
                 className="btn btn-block btn-primary channel-item" 
                 onClick={() => handleClick(channel.id)}
             >
-                #{channel.name}
-            </span>
-            <br/>
+                {channel.name}
+            </div>
+            
+            
         </div>
     );
 }
