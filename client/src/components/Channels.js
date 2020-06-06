@@ -45,6 +45,8 @@ const Channels = ({channels}) => {
                     }
                 </div>
             </div>
+
+            <div className="row"></div>
         </div>
     );
 }

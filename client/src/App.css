@@ -43,3 +43,24 @@ body{
   margin-bottom:10px;
 }
 
+/* Single Message */
+.message{
+  background-color: rgb(217, 237, 238);
+  width:90%;
+  border: rgb(190, 222, 231) solid 1px;
+  border-radius: 13px;
+  margin: 5px 15px;
+  padding:15px;
+}
+
+.usename{
+  font-weight: bold;
+  font: rgb(39, 39, 39);
+
+}
+
+.created_at{
+  font-style: italic;
+  font-weight: lighter;
+  font: rgb(200, 201, 202);
+}
