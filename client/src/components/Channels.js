@@ -18,6 +18,8 @@ const Channels = ({channels}) => {
         setMessages(data.data)
     }
 
+   
+
     
     return (
         <div className="row">
@@ -44,9 +46,31 @@ const Channels = ({channels}) => {
                         <span>Please, click in a channel and start chatting!</span>    
                     }
                 </div>
+
+                <div className="row">
+                    <form 
+                        className="form-row col-md-12 ml-3"
+                        onSubmit={handlleSubmit}
+                    >
+                        <div className="col-auto ">
+                            <input 
+                                type="text"
+                                className="form-control"
+                                autofocus
+                            ></input>
+                        </div>
+                        <div className="col-auto ">
+                            <button 
+                                type="submit"
+                                className="btn btn-block btn-primary"
+                            >Send
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
 
-            <div className="row"></div>
+            
         </div>
     );
 }
