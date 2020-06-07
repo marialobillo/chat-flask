@@ -7,7 +7,8 @@ import Messages from './Messages';
 const Channels = ({channels}) => {
 
     const [currentChannel, setCurrentChannel] = useState(null);
-    const [messages, setMessages] = useState(null);   
+    const [messages, setMessages] = useState(null);  
+    const [message, setMessage] = useState(null); 
     
     const handleClick = async (channel_id) => {
 
@@ -18,7 +19,16 @@ const Channels = ({channels}) => {
         setMessages(data.data)
     }
 
-   
+    const handleChange = event => {
+
+        console.log(event.target.value);
+        setMessage(event.target.value);
+    }
+
+    const handleMessage = (event) => {
+        event.preventDefault()
+        console.log(message)
+    }
 
     
     return (
@@ -50,19 +60,19 @@ const Channels = ({channels}) => {
                 <div className="row">
                     <form 
                         className="form-row col-md-12 ml-3"
-                        onSubmit={handlleSubmit}
                     >
                         <div className="col-auto ">
                             <input 
                                 type="text"
                                 className="form-control"
-                                autofocus
+                                onChange={handleChange}
                             ></input>
                         </div>
                         <div className="col-auto ">
                             <button 
                                 type="submit"
                                 className="btn btn-block btn-primary"
+                                onClick={handleMessage}
                             >Send
                             </button>
                         </div>
