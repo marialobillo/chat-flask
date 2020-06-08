@@ -1,14 +1,28 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Moment from 'react-moment';
+import Axios from 'axios';
 
 const Message = ({message}) => {
     
     const {user_id, created_at, content} = message;
+    const [username, setUsername] = useState('');
+
+    useEffect(() => {
+        const getUsername = async (user_id) => {
+            const url = 'http://localhost:5000/api/users/' + user_id;
+            const { data } = await Axios.get(url);
     
-    const getUsername = async (user_id) => {
-        const url = ''
-        
-    }
+            console.log(data.data.username);
+            // setUsername(data.data.username);
+            
+        }
+
+        getUsername(user_id)
+
+
+    }, [])
+    
+    
 
     return (
 
