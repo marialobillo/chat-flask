@@ -6,16 +6,17 @@ import Messages from './Messages';
 
 const Channels = ({channels}) => {
 
-    const [currentChannel, setCurrentChannel] = useState(null);
+    const [currentChannel, setCurrentChannel] = useState({});
     const [messages, setMessages] = useState(null);  
     const [message, setMessage] = useState(null); 
     
-    const handleClick = async (channel_id) => {
+    const handleClick = async (channel) => {
 
-        const url = 'http://localhost:5000/api/bychannel/' + channel_id;
+        const url = 'http://localhost:5000/api/bychannel/' + channel.id;
         const { data } = await Axios.get(url);
 
-        setCurrentChannel(channel_id)
+        setCurrentChannel(channel)
+        console.log('que nos trae', channel);
         setMessages(data.data)
     }
 
@@ -30,7 +31,7 @@ const Channels = ({channels}) => {
         console.log(message)
     }
 
-    
+    console.log(currentChannel)
     return (
         <div className="row">
             
@@ -49,7 +50,13 @@ const Channels = ({channels}) => {
 
             <div className="message-panel col-md-8">
                 <div className="panel">
-                    <h4>Messages</h4>
+            <h4>{currentChannel != (Object.keys(currentChannel).length == 0) 
+                ? 
+                    (currentChannel.name + ' Channel') 
+                : 
+                    null
+                }
+                </h4>
                     {messages ? 
                         (<Messages messages={messages} />)
                     :
@@ -57,27 +64,33 @@ const Channels = ({channels}) => {
                     }
                 </div>
 
-                <div className="row">
-                    <form 
-                        className="form-row col-md-12 ml-3"
-                    >
-                        <div className="col-auto ">
-                            <input 
-                                type="text"
-                                className="form-control"
-                                onChange={handleChange}
-                            ></input>
-                        </div>
-                        <div className="col-auto ">
-                            <button 
-                                type="submit"
-                                className="btn btn-block btn-primary"
-                                onClick={handleMessage}
-                            >Send
-                            </button>
-                        </div>
-                    </form>
-                </div>
+                { currentChannel != Object.keys(currentChannel).length == 0 ? 
+                    (<div className="row">
+                        <form 
+                            className="form-row col-md-12 ml-3"
+                        >
+                            <div className="col-auto ">
+                                <input 
+                                    type="text"
+                                    className="form-control"
+                                    onChange={handleChange}
+                                ></input>
+                            </div>
+                            <div className="col-auto ">
+                                <button 
+                                    type="submit"
+                                    className="btn btn-block btn-primary"
+                                    onClick={handleMessage}
+                                >Send
+                                </button>
+                            </div>
+                        </form>
+                    </div>)
+                :
+                    null
+                }
+
+
             </div>
 
             

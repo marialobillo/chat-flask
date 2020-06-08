@@ -6,7 +6,7 @@ const Channel = ({channel, handleClick}) => {
         <div className="container" >
             <div 
                 className="btn btn-block btn-primary channel-item" 
-                onClick={() => handleClick(channel.id)}
+                onClick={() => handleClick(channel)}
             >
                 {channel.name}
             </div>
