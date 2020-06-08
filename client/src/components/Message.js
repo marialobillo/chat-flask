@@ -12,8 +12,7 @@ const Message = ({message}) => {
             const url = 'http://localhost:5000/api/users/' + user_id;
             const { data } = await Axios.get(url);
     
-            console.log(data.data.username);
-            // setUsername(data.data.username);
+            setUsername(data.data.username);
             
         }
 
@@ -26,15 +25,18 @@ const Message = ({message}) => {
 
     return (
 
-        <div className="row message">
+        <div className="message">
             <div className="row">
-                <span className="username">{user_id}</span>
-                <span className="created_at">
+                <div className="username col align-self-start font-weight-bold">{username}</div>
+                <div className="created_at align-self-end">
                     <Moment fromNow>{created_at}</Moment>
-                </span>
+                </div>
             </div>
+            
             <div className="row">
-                {content}
+                <div className="col align-self-start">
+                    {content}
+                </div>
             </div>
         </div>
     );
