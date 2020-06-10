@@ -4,7 +4,7 @@ import Channels from './Channels';
 import Navbar from './Navbar';
 // import Messages from './Messages';
 
-const Dashboard = () => {
+const Dashboard = ({user}) => {
 
     const [channels, setChannels] = useState([]);
     
@@ -16,20 +16,7 @@ const Dashboard = () => {
             setChannels(data.data);
         }
 
-        // const getMessages = async () => {
-
-        //     if(currentChannel){
-        //         const url = 'http://localhost:5000/api/bychannel/' + currentChannel ;
-        //         const { data } = await Axios.get(url);  
-        //         setMessages(data.data);   
-        //     }
-    
-        // }
-
-        loadChannels();
-
-        // getMessages();
-        
+        loadChannels();        
     }, []);
 
     
@@ -40,7 +27,7 @@ const Dashboard = () => {
             <Navbar />
             
             <aside className="container">
-                <Channels channels={channels}  />
+                <Channels channels={channels} user={user} />
             </aside>
             
         

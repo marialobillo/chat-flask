@@ -8,7 +8,7 @@ const Channels = ({channels}) => {
 
     const [currentChannel, setCurrentChannel] = useState('');
     const [messages, setMessages] = useState(null);  
-    const [message, setMessage] = useState(null); 
+    const [message, setMessage] = useState(''); 
     
     const handleClick = async (channel) => {
 
@@ -71,6 +71,7 @@ const Channels = ({channels}) => {
                                     type="text"
                                     className="form-control"
                                     onChange={handleChange}
+                                    value={message}
                                 ></input>
                             </div>
                             <div className="col-auto ">
@@ -78,7 +79,7 @@ const Channels = ({channels}) => {
                                     type="submit"
                                     className="btn btn-block btn-primary"
                                     onClick={handleMessage}
-                                >Send
+                                >Send New Message
                                 </button>
                             </div>
                         </form>
