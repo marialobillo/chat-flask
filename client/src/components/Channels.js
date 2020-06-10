@@ -16,13 +16,11 @@ const Channels = ({channels}) => {
         const { data } = await Axios.get(url);
 
         setCurrentChannel(channel)
-        console.log('que nos trae', channel);
         setMessages(data.data)
     }
 
     const handleChange = event => {
 
-        console.log(event.target.value);
         setMessage(event.target.value);
     }
 
@@ -31,7 +29,6 @@ const Channels = ({channels}) => {
         console.log(message)
     }
 
-    console.log(currentChannel)
     return (
         <div className="row">
             
@@ -39,7 +36,7 @@ const Channels = ({channels}) => {
             <ul className="channel-panel col-md-3 ">
             <h4>Channels</h4>
             {channels.map(channel => (
-                <li>
+                <li key={channel.id}>
                     <Channel 
                         channel={channel}
                         handleClick={handleClick} 

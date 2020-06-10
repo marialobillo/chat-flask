@@ -12,8 +12,7 @@ const Message = ({message}) => {
             const url = 'http://localhost:5000/api/users/' + user_id;
             const { data } = await Axios.get(url);
     
-            setUsername(data.data.username);
-            
+            setUsername(data.data.username);   
         }
 
         getUsername(user_id)
