@@ -4,7 +4,7 @@ import Axios from 'axios';
 import Channel from './Channel';
 import Messages from './Messages';
 
-const Channels = ({channels}) => {
+const Channels = ({channels, user}) => {
 
     const [currentChannel, setCurrentChannel] = useState('');
     const [messages, setMessages] = useState(null);  
@@ -26,7 +26,26 @@ const Channels = ({channels}) => {
 
     const handleMessage = (event) => {
         event.preventDefault()
-        console.log(message)
+
+        // const newMessage = {
+        //     "content": message, 
+        //     "used_id": user.id,
+        //     "channel_id": currentChannel.id
+        // }
+     
+
+        createNewMessage(user.id, currentChannel.id, message);
+
+        
+
+    }
+
+    const createNewMessage = async (user_id, channel_id, content) => {
+        
+        const url = 'http://localhost:5000/api/messages';
+        const { data } = await Axios.post(url, {user_id, channel_id, content});
+
+        console.log(data);
     }
 
     return (

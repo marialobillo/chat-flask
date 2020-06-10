@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import Channels from './Channels';
 import Navbar from './Navbar';
-// import Messages from './Messages';
 
 const Dashboard = ({user}) => {
 
@@ -19,9 +18,6 @@ const Dashboard = ({user}) => {
         loadChannels();        
     }, []);
 
-    
-
-    
     return(
         <div className="">
             <Navbar />
@@ -29,9 +25,6 @@ const Dashboard = ({user}) => {
             <aside className="container">
                 <Channels channels={channels} user={user} />
             </aside>
-            
-        
-            
         </div>
 
     )

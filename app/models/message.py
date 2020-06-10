@@ -24,8 +24,8 @@ class Message(db.Model):
         }
 
     @classmethod 
-    def new(cls, user_id, channel_id, content, created_at):
-        return Message(user_id=user_id, channel_id=channel_id, content=content, created_at=created_at)
+    def new(cls, user_id, channel_id, content):
+        return Message(user_id=user_id, channel_id=channel_id, content=content)
 
 
     def save(self):
