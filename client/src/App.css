@@ -39,7 +39,7 @@ body{
 }
 
 .channel-item{
-  list-style: none;
+  list-style: none !important; 
   margin-bottom:10px;
 }
 
@@ -63,3 +63,4 @@ body{
   float: right;
   
 }
+

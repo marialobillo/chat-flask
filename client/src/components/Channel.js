@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Channel = ({channel, handleClick}) => {
+const Channel = ({channel, handleClick, currentChannel}) => {
 
     return (
         <div className="container" >

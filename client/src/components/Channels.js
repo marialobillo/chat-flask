@@ -6,7 +6,7 @@ import Messages from './Messages';
 
 const Channels = ({channels}) => {
 
-    const [currentChannel, setCurrentChannel] = useState({});
+    const [currentChannel, setCurrentChannel] = useState('');
     const [messages, setMessages] = useState(null);  
     const [message, setMessage] = useState(null); 
     
@@ -39,7 +39,7 @@ const Channels = ({channels}) => {
             <ul className="channel-panel col-md-3 ">
             <h4>Channels</h4>
             {channels.map(channel => (
-                <li className="channel-item" key={channel.id}>
+                <li>
                     <Channel 
                         channel={channel}
                         handleClick={handleClick} 
