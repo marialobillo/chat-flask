@@ -64,7 +64,7 @@ const Channels = ({channels}) => {
                     }
                 </div>
 
-                { currentChannel != Object.keys(currentChannel).length == 0 ? 
+                { messages ? 
                     (<div className="row">
                         <form 
                             className="form-row col-md-12 ml-3"
