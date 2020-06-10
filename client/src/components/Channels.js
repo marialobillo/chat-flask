@@ -50,7 +50,7 @@ const Channels = ({channels}) => {
 
             <div className="message-panel col-md-8">
                 <div className="panel">
-            <h4>{currentChannel != (Object.keys(currentChannel).length == 0) 
+            <h4>{messages
                 ? 
                     (currentChannel.name + ' Channel') 
                 : 
