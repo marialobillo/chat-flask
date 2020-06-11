@@ -17,16 +17,3 @@ const Channel = ({channel, handleClick, currentChannel}) => {
 }
 
 export default Channel;
-
-
-
-
-
-
-
-
-
-
-
-
-

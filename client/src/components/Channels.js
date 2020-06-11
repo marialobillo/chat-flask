@@ -10,11 +10,11 @@ const Channels = ({channels, user}) => {
     const [messages, setMessages] = useState(null);  
     const [message, setMessage] = useState(''); 
     
-    useEffect( () => {
-        currentChannel != ''? loadMessages(currentChannel): null;
-    }, [])
+    // useEffect( () => {
+    //     currentChannel != ''? loadMessages(currentChannel): null;
+    // }, [])
 
-    const loadMesages = async (channel) => {
+    const loadMessages = async (channel) => {
     
         const url = 'http://localhost:5000/api/bychannel/' + channel.id;
         const { data } = await Axios.get(url);
@@ -23,9 +23,9 @@ const Channels = ({channels, user}) => {
 
     }
 
-    const handleClick = (channel) => {
+    const handleClick = async (channel) => {
 
-        const data = loadMessages(channel)
+        const data = await loadMessages(channel)
 
         setCurrentChannel(channel)
         setMessages(data);
@@ -120,4 +120,3 @@ const Channels = ({channels, user}) => {
 }
 
 export default Channels;
-
