@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import Axios from 'axios';
 
 import Channel from './Channel';
@@ -10,13 +10,25 @@ const Channels = ({channels, user}) => {
     const [messages, setMessages] = useState(null);  
     const [message, setMessage] = useState(''); 
     
-    const handleClick = async (channel) => {
+    useEffect( () => {
+        currentChannel != ''? loadMessages(currentChannel): null;
+    }, [])
 
+    const loadMesages = async (channel) => {
+    
         const url = 'http://localhost:5000/api/bychannel/' + channel.id;
         const { data } = await Axios.get(url);
 
+        return data.data;
+
+    }
+
+    const handleClick = (channel) => {
+
+        const data = loadMessages(channel)
+
         setCurrentChannel(channel)
-        setMessages(data.data)
+        setMessages(data);
     }
 
     const handleChange = event => {
@@ -26,22 +38,14 @@ const Channels = ({channels, user}) => {
 
     const handleMessage = (event) => {
         event.preventDefault()
-
-        // const newMessage = {
-        //     "content": message, 
-        //     "used_id": user.id,
-        //     "channel_id": currentChannel.id
-        // }
      
 
         createNewMessage(user.id, currentChannel.id, message);
 
-        
-
     }
 
     const createNewMessage = async (user_id, channel_id, content) => {
-        
+
         const url = 'http://localhost:5000/api/messages';
         const { data } = await Axios.post(url, {user_id, channel_id, content});
 
