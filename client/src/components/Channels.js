@@ -26,6 +26,7 @@ const Channels = ({channels, user}) => {
     const handleClick = async (channel) => {
 
         const data = await loadMessages(channel)
+        console.log(data);
 
         setCurrentChannel(channel)
         setMessages(data);
