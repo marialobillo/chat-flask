@@ -26,7 +26,7 @@ const Channels = ({channels, user}) => {
     const handleClick = async (channel) => {
 
         const data = await loadMessages(channel)
-        console.log(data);
+        
 
         setCurrentChannel(channel)
         setMessages(data);
@@ -37,11 +37,14 @@ const Channels = ({channels, user}) => {
         setMessage(event.target.value);
     }
 
-    const handleMessage = (event) => {
+    const handleMessage = async (event) => {
         event.preventDefault()
      
-
         createNewMessage(user.id, currentChannel.id, message);
+
+        const loadedMessages = await loadMessages(currentChannel);
+        console.log('Refreser : ', loadedMessages);
+        setMessages(loadedMessages);
 
     }
 
