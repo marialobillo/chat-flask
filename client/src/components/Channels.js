@@ -7,7 +7,7 @@ import Messages from './Messages';
 const Channels = ({channels, user}) => {
 
     const [currentChannel, setCurrentChannel] = useState('');
-    const [messages, setMessages] = useState(null);  
+    const [messages, setMessages] = useState([]);  
     const [message, setMessage] = useState(''); 
     
     // useEffect( () => {
@@ -41,10 +41,16 @@ const Channels = ({channels, user}) => {
         event.preventDefault()
      
         createNewMessage(user.id, currentChannel.id, message);
-
-        const loadedMessages = await loadMessages(currentChannel);
-        console.log('Refreser : ', loadedMessages);
-        setMessages(loadedMessages);
+        const newMessage = {
+            "user_id":user.id, 
+            "channel_id": currentChannel.id,
+            "content": message
+        }
+        // const loadedMessages = await loadMessages(currentChannel);
+        // setMessages({
+        //     ...messages, 
+        //     newMessage
+        // });
 
     }
 
@@ -53,7 +59,6 @@ const Channels = ({channels, user}) => {
         const url = 'http://localhost:5000/api/messages';
         const { data } = await Axios.post(url, {user_id, channel_id, content});
 
-        console.log(data);
     }
 
     return (
@@ -74,21 +79,21 @@ const Channels = ({channels, user}) => {
 
             <div className="message-panel col-md-8">
                 <div className="panel">
-            <h4>{messages
+            <h4>{currentChannel.name != ''
                 ? 
                     (currentChannel.name + ' Channel') 
                 : 
                     null
                 }
                 </h4>
-                    {messages ? 
+                    {messages.length !== 0 ? 
                         (<Messages messages={messages} />)
                     :
                         <span>Please, click in a channel and start chatting!</span>    
                     }
                 </div>
 
-                { messages ? 
+                { messages.length !== 0 ? 
                     (<div className="row">
                         <form 
                             className="form-row col-md-12 ml-3"
