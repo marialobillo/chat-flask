@@ -10,9 +10,11 @@ const Channels = ({channels, user}) => {
     const [messages, setMessages] = useState([]);  
     const [message, setMessage] = useState(''); 
     
-    // useEffect( () => {
-    //     currentChannel != ''? loadMessages(currentChannel): null;
-    // }, [])
+    useEffect( () => {
+       if(currentChannel != ''){
+           console.log('currentChannel', currentChannel);
+       }
+    }, [messages])
 
     const loadMessages = async (channel) => {
     
@@ -41,16 +43,11 @@ const Channels = ({channels, user}) => {
         event.preventDefault()
      
         createNewMessage(user.id, currentChannel.id, message);
-        const newMessage = {
-            "user_id":user.id, 
-            "channel_id": currentChannel.id,
-            "content": message
-        }
-        // const loadedMessages = await loadMessages(currentChannel);
-        // setMessages({
-        //     ...messages, 
-        //     newMessage
-        // });
+        // const newMessage = {
+        //     "user_id":user.id, 
+        //     "channel_id": currentChannel.id,
+        //     "content": message
+        // }
 
     }
 
