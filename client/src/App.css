@@ -1,66 +1,38 @@
-body{
-  background-color: #2C3E50;
+.App {
+  text-align: center;
 }
 
-.login-panel{
-  margin: 0 auto;
-  background-color:#FFF;
-  width:100%;
-  max-width: 500px;
-  padding: 20px;
-  margin-top:20px;
-  border-radius: 20px;
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
 }
 
-.form-login{
-  width:100%;
-  max-width: 400px;
-  padding: 15px;
-  margin: auto;
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
 }
 
-.channel-panel{
-  margin: 0 20px;
-  background-color:#FFF;
-  padding: 20px;
-  margin-top:20px;
-  border-radius: 15px;
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
 }
 
-.message-panel{
-  background-color: #FFF;
-  padding:20px;
-  margin-top: 20px;
-  border-radius: 15px;
+.App-link {
+  color: #61dafb;
 }
 
-.channel-list{
-  list-style: none;
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
-
-.channel-item{
-  list-style: none !important; 
-  margin-bottom:10px;
-}
-
-/* Single Message */
-.message{
-  width:90%;
-  margin: 5px 15px;
-  padding:15px;
-}
-
-.usename{
-  font: rgb(39, 39, 39);
-  margin-right: 20px;
-
-}
-
-.created_at{
-  font-style: italic;
-  font-weight: lighter;
-  font: rgb(200, 201, 202);
-  float: right;
-  
-}
-
