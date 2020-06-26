@@ -1,0 +1,66 @@
+body{
+  background-color: #2C3E50;
+}
+
+.login-panel{
+  margin: 0 auto;
+  background-color:#FFF;
+  width:100%;
+  max-width: 500px;
+  padding: 20px;
+  margin-top:20px;
+  border-radius: 20px;
+}
+
+.form-login{
+  width:100%;
+  max-width: 400px;
+  padding: 15px;
+  margin: auto;
+}
+
+.channel-panel{
+  margin: 0 20px;
+  background-color:#FFF;
+  padding: 20px;
+  margin-top:20px;
+  border-radius: 15px;
+}
+
+.message-panel{
+  background-color: #FFF;
+  padding:20px;
+  margin-top: 20px;
+  border-radius: 15px;
+}
+
+.channel-list{
+  list-style: none;
+}
+
+.channel-item{
+  list-style: none !important; 
+  margin-bottom:10px;
+}
+
+/* Single Message */
+.message{
+  width:90%;
+  margin: 5px 15px;
+  padding:15px;
+}
+
+.usename{
+  font: rgb(39, 39, 39);
+  margin-right: 20px;
+
+}
+
+.created_at{
+  font-style: italic;
+  font-weight: lighter;
+  font: rgb(200, 201, 202);
+  float: right;
+  
+}
+
