@@ -7,10 +7,13 @@ const Channels = () => {
     return (
         <div className="">
             <Navbar />
-            <Sidebar />
+            <div className="row">
+                <Sidebar />
 
-            <div className="main">
-                Content
+                <div className="col-7">
+                    Content
+                </div>
+
             </div>
         </div>
     );

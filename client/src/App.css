@@ -8,7 +8,7 @@
 }
 
 .header{
-  width:30%;
+  
   margin-left: 0;
   padding: 20px 0;
 }
@@ -20,10 +20,15 @@
 
 .channels{
   display:inline;
-  width:100%;
+  /* width:100%; */
   margin-top:15px;
 }
 
 .form{
   margin-top:50px;
+}
+
+.content{
+  float:right;
+  display:inline;
 }

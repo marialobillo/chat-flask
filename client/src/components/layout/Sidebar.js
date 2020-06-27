@@ -4,7 +4,7 @@ import ChannelList from '../channels/ChannelList';
 
 const Sidebar = () => {
     return (
-        <aside>
+        <aside className="col-3">
             <header className="header">
                 <nav className="navbar navbar-toggleable-md pt-0 pb-0 ">
 
