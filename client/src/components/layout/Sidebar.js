@@ -1,5 +1,6 @@
 import React from 'react';
 import NewChannel from '../channels/NewChannel';
+import ChannelList from '../channels/ChannelList';
 
 const Sidebar = () => {
     return (
@@ -13,6 +14,8 @@ const Sidebar = () => {
 
                 <div className="channels">
                     <h5>Channels</h5>
+
+                    <ChannelList />
 
                 </div>
           
