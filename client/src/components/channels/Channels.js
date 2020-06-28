@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../layout/Navbar';
 import Sidebar from '../layout/Sidebar';
+import FormMessage from '../messages/FormMessage';
 
 
 const Channels = () => {
@@ -11,7 +12,7 @@ const Channels = () => {
                 <Sidebar />
 
                 <div className="col-7">
-                    Content
+                    <FormMessage />
                 </div>
 
             </div>
