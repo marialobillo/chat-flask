@@ -32,3 +32,13 @@
   float:right;
   display:inline;
 }
+
+.message{
+  padding: 12px 5px;
+  padding-right: 50px;
+  list-style: none;
+  font-size: 1.2em;
+  border: 1px solid #eee;
+  border-radius: 13px;
+  margin-top: 10px;
+}
