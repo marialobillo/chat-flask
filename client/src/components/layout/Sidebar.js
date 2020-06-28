@@ -9,8 +9,6 @@ const Sidebar = () => {
                 <nav className="navbar navbar-toggleable-md pt-0 pb-0 ">
 
                 <NewChannel />
-            
-
 
                 <div className="channels">
                     <h5>Channels</h5>

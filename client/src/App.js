@@ -6,17 +6,20 @@ import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Channels from './components/channels/Channels';
 
+import ChannelState from './context/channels/channelState';
+
 
 function App() {
   return (
-    <Router>
-
-      <Switch>
-        <Route exact path="/" component={Login} />
-        <Route exact path="/register" component={Register} />
-        <Route exact path="/channels" component={Channels} />
-      </Switch>
-    </Router>
+    <ChannelState>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Login} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/channels" component={Channels} />
+        </Switch>
+      </Router>
+    </ChannelState>
   );
 }
 
