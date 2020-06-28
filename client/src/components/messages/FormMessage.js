@@ -77,7 +77,7 @@ const FormMessage = () => {
                     <input 
                         type="text"
                         className="form-control"
-                        placeholder="Message Name..."
+                        placeholder="Write something..."
                         name="content"
                         value={content}
                         onChange={handleChange}

@@ -11,8 +11,15 @@ const Channels = () => {
             <div className="row">
                 <Sidebar />
 
-                <div className="col-7">
-                    <FormMessage />
+                <div className="col-8">
+
+                    <div className="row">
+                        Space for Messages
+                    </div>
+
+                    <div className="row">
+                        <FormMessage />
+                    </div>
                 </div>
 
             </div>
