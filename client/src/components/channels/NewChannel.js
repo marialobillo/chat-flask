@@ -5,7 +5,7 @@ const NewChannel = () => {
 
     // get the state of form
     const channelsContext = useContext(channelContext);
-    const { channelForm } = channelsContext;
+    const { channelForm, showForm } = channelsContext;
 
 
     const [channel, setChannel] = useState({
@@ -40,8 +40,9 @@ const NewChannel = () => {
     }
 
     const onClickForm = () => {
-        //showForm();
+        showForm();
     }
+
 
     
     return (

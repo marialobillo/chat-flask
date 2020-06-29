@@ -82,9 +82,9 @@ const ChannelState = props => {
             value={{
                 channels: state.channels,
                 channelForm: state.channelForm,
-                showForm: showForm,
                 formerror: state.formerror,
                 channel: state.channel,
+                showForm,
                 getChannels,
                 addChannel,
                 showError,
