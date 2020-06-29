@@ -5,7 +5,7 @@ const NewChannel = () => {
 
     // get the state of form
     const channelsContext = useContext(channelContext);
-    const { channelForm, showForm, showError } = channelsContext;
+    const { channelForm, showForm, showError, addChannel } = channelsContext;
 
 
     const [channel, setChannel] = useState({
@@ -31,7 +31,8 @@ const NewChannel = () => {
         }
 
         // add to the state
-        setChannel(channel)
+        addChannel(channel);
+        // setChannel(channel)
 
         // Restart the form
         setChannel({
