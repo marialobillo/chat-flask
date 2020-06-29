@@ -14,14 +14,16 @@ import {
     DELETE_CHANNEL
     } from '../../types';
 
-const channels = [
-    { id: 1, name: 'General' },
-    { id: 2, name: 'Javascript' },
-    { id: 3, name: 'Python' },
-    { id: 4, name: 'TDD'}
-]
+
 
 const ChannelState = props => {
+
+    const channels = [
+        { id: 1, name: 'General' },
+        { id: 2, name: 'Javascript' },
+        { id: 3, name: 'Python' },
+        { id: 4, name: 'TDD' },
+    ];
     
     const initialState = {
         channels : [],

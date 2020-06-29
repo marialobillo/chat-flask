@@ -5,7 +5,7 @@ const NewChannel = () => {
 
     // get the state of form
     const channelsContext = useContext(channelContext);
-    const { channelForm, showForm } = channelsContext;
+    const { channelForm, showForm, showError } = channelsContext;
 
 
     const [channel, setChannel] = useState({
@@ -26,7 +26,7 @@ const NewChannel = () => {
 
         // Validate
         if(name === '') { 
-            //showError();
+            showError();
             return;
         }
 

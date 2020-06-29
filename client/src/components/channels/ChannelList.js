@@ -1,21 +1,15 @@
 import React, { useContext, useEffect } from 'react';
 import Channel from './Channel';
-// import projectContext from '../../context/projects/projectContext';
+import channelContext from '../../context/channels/channelContext';
 
 const ChannelList = () => {
 
-    const channels = [
-        { name: 'General'},
-        { name: 'Javascript'},
-        { name: 'React.js'},
-        { name: 'Python'},
-    ]
 
-    // const projectsContext = useContext(projectContext);
-    // const { projects, getProjects } = projectsContext;
+    const channelsContext = useContext(channelContext);
+    const { channels, getChannels } = channelsContext;
 
     useEffect( () => {
-        // getChannels();
+        getChannels();
 
         // eslint-disable-next-line
     }, [])
@@ -26,7 +20,7 @@ const ChannelList = () => {
         <ul className="channel-list">
             {channels.map(channel => (
                <Channel
-                    // key={channel.id} 
+                    key={channel.id} 
                     channel={channel}
                /> 
             ))}
