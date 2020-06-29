@@ -5,7 +5,8 @@ const NewChannel = () => {
 
     // get the state of form
     const channelsContext = useContext(channelContext);
-    const { channelForm, showForm, showError, addChannel } = channelsContext;
+    const { channelForm, showForm, 
+        showError, addChannel, formerror } = channelsContext;
 
 
     const [channel, setChannel] = useState({
@@ -86,8 +87,12 @@ const NewChannel = () => {
                )
                :
                null
-           }
-            
+            }
+            { formerror ?
+                (<p className="alert alert-dismissible alert-danger">
+                   Please, add a name for the Channel.
+                </p>)
+            : null }
            
         </Fragment>
     );
