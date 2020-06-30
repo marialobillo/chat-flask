@@ -1,11 +1,11 @@
 import React, { useContext, useState, useEffect } from 'react';
-// import projectContext from '../../context/projects/projectContext';
+import channelContext from '../../context/channels/channelContext';
 // import taskContext from '../../context/tasks/taskContext';
 
 const FormMessage = () => {
 
-    // const projectsContext = useContext(projectContext);
-    // const { project } = projectsContext;
+    const channelsContext = useContext(channelContext);
+    const { channel } = channelsContext;
 
     // const tasksContext = useContext(taskContext);
     // const { selectedtask, errortask, addTask, 
@@ -22,9 +22,9 @@ const FormMessage = () => {
     // extraer el nombre del projecto
     const { content } = message;
 
-    // if(!channel) return null;
+    if(!channel) return null;
 
-    // const [currentChannel] = channel;
+    const [currentChannel] = channel;
 
     // Read the values of the form
     const handleChange = event => {
