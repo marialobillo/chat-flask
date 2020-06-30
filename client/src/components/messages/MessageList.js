@@ -1,6 +1,6 @@
 import React, { Fragment, useContext } from 'react';
 import Message from './Message';
-// import projectContext from '../../context/projects/projectContext';
+import channelContext from '../../context/channels/channelContext';
 // import taskContext from '../../context/tasks/taskContext';
 
 const MessageList = () => {
@@ -13,17 +13,17 @@ const MessageList = () => {
 
     ]
 
-    // const projectsContext = useContext(projectContext);
-    // const { project, deleteProject } = projectsContext;
+    const channelsContext = useContext(channelContext);
+    const { channel } = channelsContext;
 
     // get the tasks de cada projecto
     // const tasksContext = useContext(taskContext);
     // const { tasksproject } = tasksContext;
 
     // if not current project
-    // if(!channel) return <h3>Select a Channel from the sidebar</h3>;
+    if(!channel) return <h3>Select a Channel from the sidebar</h3>;
 
-    // const [currentChannel] = channel;
+    const [currentChannel] = channel;
 
     const handleDeleteChannel = () => {
         // deleteProject(currentChannel.id);
@@ -32,7 +32,7 @@ const MessageList = () => {
     return (
         <Fragment >
             <div className="col-md-12">
-                {/* <h3 className="text-center">Project : {currentChannel.name} </h3> */}
+                <h3 className="text-center">Channel : {currentChannel.name} </h3>
             </div>
             <ul className="panel">
                 {messagesChannel.length === 0 ? 

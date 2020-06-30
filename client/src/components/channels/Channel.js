@@ -13,7 +13,7 @@ const Channel = ({channel}) => {
 
     // function for add current project
     const selectChannel = id => {
-        // currentProject(id); // Set the current project
+        currentChannel(id); // Set the current project
         // getTasks(id); // Filter tasks when on Click
     }
 
@@ -22,7 +22,7 @@ const Channel = ({channel}) => {
             <button
                 type="button"
                 className="btn btn-light"
-                // onClick={ () => selectChannel(channel.id) }
+                onClick={ () => selectChannel(channel.id) }
             >
                 {channel.name}
             </button>
