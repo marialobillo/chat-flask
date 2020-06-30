@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
-// import projectContext from '../../context/projects/projectContext';
+import channelContext from '../../context/channels/channelContext';
 // import taskContext from '../../context/tasks/taskContext';
 
 const Channel = ({channel}) => {
 
-    // const projectsContext = useContext(projectContext);
-    // const { currentProject } = projectsContext;
+    const channelsContext = useContext(channelContext);
+    const { currentChannel } = channelsContext;
 
     // // get the function of context task
     // const tasksContext = useContext(taskContext);
