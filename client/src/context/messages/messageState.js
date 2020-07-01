@@ -48,42 +48,42 @@ const MessageState = props => {
     }
 
     // add a task
-    const addTask = task => {
-        task.id = uuidv4();
+    const addMessage = message => {
+        message.id = uuidv4();
         dispatch({
-            type: ADD_TASK, 
-            payload: task
+            type: ADD_MESSAGE, 
+            payload: message
         })
     }
 
     // Valida y muestra un error en caso de que sea necesario
-    const taskValidation = () => {
+    const messageValidation = () => {
         dispatch({
-            type: TASK_VALIDATION
+            type: MESSAGE_VALIDATION
         })
     }
 
     // eliminar tarea por id
-    const deleteTask = id => {
+    const deleteMessage = id => {
         dispatch({
-            type: DELETE_TASK,
+            type: DELETE_MESSAGE,
             payload: id
         })
     }
 
-    //  change the state of every task
-    const changeTaskState = task => {
-        dispatch({
-            type: TASK_STATE,
-            payload: task
-        })
-    }
+    // //  change the state of every task
+    // const changeMessageState = task => {
+    //     dispatch({
+    //         type: TASK_STATE,
+    //         payload: task
+    //     })
+    // }
 
     // EXTRAE UNA TARA PARA EDICION
-    const saveCurrentTask = task => {
+    const saveCurrentMessage = message => {
         dispatch({
-            type: CURRENT_TASK,
-            payload: task
+            type: CURRENT_MESSAGE,
+            payload: message
         })
     }
 
