@@ -11,7 +11,7 @@ import {
 
 export default (state, action) => {
     switch(action.type){
-        case MESSAGES_PROJECT:
+        case MESSAGES_CHANNEL:
             return {
                 ...state,
                 messageschannel: state.messages.filter(message => message.channel_id === action.payload)
