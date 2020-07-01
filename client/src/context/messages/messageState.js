@@ -88,40 +88,39 @@ const MessageState = props => {
     }
 
     // UPDATE TASK
-    const updateTask = task => {
+    const updateMessage = message => {
         dispatch({
-            type: UPDATE_TASK,
-            payload: task
+            type: UPDATE_MESSAGE,
+            payload: message
         })
     }
 
     // CLEAN TASK
-    const cleanTask = () => {
+    const cleanMessage = () => {
         dispatch({
-            type: CLEAN_TASK
+            type: CLEAN_MESSAGE
         })
     }
 
     return (
-        <TaskContext.Provider
+        <MessageContext.Provider
             value={{
-                tasks: state.tasks,
-                tasksproject: state.tasksproject,
-                errortask: state.errortask,
-                selectedtask: state.selectedtask,
-                getTasks,
-                addTask,
-                taskValidation,
-                deleteTask,
-                changeTaskState,
-                saveCurrentTask,
-                updateTask,
-                cleanTask
+                messages: state.messages,
+                messageschannel: state.messageschannel,
+                errormessage: state.errormessage,
+                selectedmessage: state.selectedmessage,
+                getMessages,
+                addMessage,
+                messageValidation,
+                deleteMessage,
+                saveCurrentMessage,
+                updateMessage,
+                cleanMessage
             }}
         >
             {props.children}
-        </TaskContext.Provider>
+        </MessageContext.Provider>
     )
 }
 
-export default TaskState;
+export default MessageState;
