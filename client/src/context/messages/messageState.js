@@ -4,7 +4,7 @@ import MessageReducer from './messageReducer';
 import {v4 as uuidv4} from 'uuid';
 
 import { 
-    MESSAGES_PROJECT,
+    MESSAGES_CHANNEL,
     ADD_MESSAGE,
     MESSAGE_VALIDATION,
     DELETE_MESSAGE,
@@ -40,10 +40,10 @@ const MessageState = props => {
 
 
     // Get the task from a project
-    const getTasks = projectId => {
+    const getMessages = channelId => {
         dispatch({
-            type: TASKS_PROJECT,
-            payload: projectId
+            type: MESSAGES_CHANNEL,
+            payload: channelId
         })
     }
 
