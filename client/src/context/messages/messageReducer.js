@@ -42,16 +42,16 @@ export default (state, action) => {
                     action.payload : message)
             }
 
-        case CURRENT_TASK:
+        case CURRENT_MESSAGE:
             return {
                 ...state, 
-                selectedtask: action.payload
+                selectedmessage: action.payload
             }
 
-        case CLEAN_TASK:
+        case CLEAN_MESSAGE:
             return {
                 ...state, 
-                selectedtask: null
+                selectedmessage: null
             }
 
         default:
