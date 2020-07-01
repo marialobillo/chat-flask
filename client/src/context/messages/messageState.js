@@ -15,29 +15,28 @@ import {
 } from '../../types';
 
 
-const TaskState = props => {
+const MessageState = props => {
     const initialState = {
         tasks: [
-            { id: 0, name: 'Elegir platarforma', state: true, project_id: 1},
-            { id: 1, name: 'Choose colors', state: false, project_id: 2},
-            { id: 2, name: 'Do the border', state: false, project_id: 3},
-            { id: 3, name: 'Payment platforms', state: true, project_id: 4},
-            { id: 4, name: 'Elegir platarforma', state: true, project_id: 2},
-            { id: 5, name: 'Choose colors', state: false, project_id: 3},
-            { id: 6, name: 'Do the border', state: false, project_id: 4},
-            { id: 7, name: 'Payment platforms', state: true, project_id: 1},
-            { id: 8, name: 'Elegir platarforma', state: true, project_id: 3},
-            { id: 9, name: 'Choose colors', state: false, project_id: 4},
-            { id: 10, name: 'Do the border', state: false, project_id: 2},
-            { id: 11, name: 'The new reality', state: true, project_id: 1}
+            { id: 0, content: 'Elegir platarforma', channel_id: 1},
+            { id: 1, content: 'Choose colors', channel_id: 2},
+            { id: 2, content: 'Do the border', channel_id: 3},
+            { id: 3, content: 'Payment platforms', channel_id: 4},
+            { id: 4, content: 'Elegir platarforma', channel_id: 2},
+            { id: 5, content: 'Choose colors', channel_id: 3},
+            { id: 6, content: 'Do the border', channel_id: 4},
+            { id: 7, content: 'Payment platforms', channel_id: 1},
+            { id: 8, content: 'Elegir platarforma', channel_id: 3},
+            { id: 9, content: 'Choose colors', channel_id: 2},
+            { id: 11, content: 'The new reality', channel_id: 1}
         ],
-        tasksproject: null,
-        errortask: false,
-        selectedtask: null
+        messageschannel: null,
+        errormessage: false,
+        selectedmessage: null
     }
 
     // create dispatch and state
-    const [state, dispatch] = useReducer(TaskReducer, initialState);
+    const [state, dispatch] = useReducer(MessageReducer, initialState);
 
 
     // Get the task from a project
