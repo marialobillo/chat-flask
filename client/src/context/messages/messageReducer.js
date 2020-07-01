@@ -28,18 +28,18 @@ export default (state, action) => {
                 ...state,
                 errormessage: true
             }
-        case DELETE_TASK:
+        case DELETE_MESSAGE:
             return {
                 ...state, 
-                tasks: state.tasks.filter(task => task.id !== action.payload)
+                messages: state.messages.filter(message => message.id !== action.payload)
             }
 
-        case UPDATE_TASK:
-        case TASK_STATE:
+        case UPDATE_MESSAGE:
+        case MESSAGE_STATE:
             return {
                 ...state, 
-                tasks: state.tasks.map(task => task.id === action.payload.id ? 
-                    action.payload : task)
+                messages: state.messages.map(message => message.id === action.payload.id ? 
+                    action.payload : message)
             }
 
         case CURRENT_TASK:
