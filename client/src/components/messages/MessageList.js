@@ -25,9 +25,9 @@ const MessageList = () => {
 
     const [currentChannel] = channel;
 
-    const handleDeleteChannel = () => {
-        // deleteProject(currentChannel.id);
-    }
+    // const handleDeleteChannel = () => {
+    //     // deleteProject(currentChannel.id);
+    // }
 
     return (
         <Fragment >
