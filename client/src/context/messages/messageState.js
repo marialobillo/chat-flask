@@ -17,7 +17,7 @@ import {
 
 const MessageState = props => {
     const initialState = {
-        tasks: [
+        messages: [
             { id: 0, content: 'Elegir platarforma', channel_id: 1},
             { id: 1, content: 'Choose colors', channel_id: 2},
             { id: 2, content: 'Do the border', channel_id: 3},

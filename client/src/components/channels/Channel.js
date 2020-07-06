@@ -1,20 +1,20 @@
 import React, { useContext } from 'react';
 import channelContext from '../../context/channels/channelContext';
-// import taskContext from '../../context/tasks/taskContext';
+import messageContext from '../../context/messages/messageContext';
 
-const Channel = ({channel}) => {
+const Channel = ({ channel }) => {
 
     const channelsContext = useContext(channelContext);
     const { currentChannel } = channelsContext;
 
     // // get the function of context task
-    // const tasksContext = useContext(taskContext);
-    // const { getTasks } = tasksContext;
+    const messagesContext = useContext(messageContext);
+    const { getMessages } = messagesContext;
 
     // function for add current project
     const selectChannel = id => {
         currentChannel(id); // Set the current project
-        // getTasks(id); // Filter tasks when on Click
+        getMessages(id); // Filter tasks when on Click
     }
 
     return (
