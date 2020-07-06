@@ -71,15 +71,8 @@ const MessageState = props => {
         })
     }
 
-    // //  change the state of every task
-    // const changeMessageState = task => {
-    //     dispatch({
-    //         type: TASK_STATE,
-    //         payload: task
-    //     })
-    // }
+   
 
-    // EXTRAE UNA TARA PARA EDICION
     const saveCurrentMessage = message => {
         dispatch({
             type: CURRENT_MESSAGE,

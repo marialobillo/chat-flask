@@ -1,15 +1,14 @@
 import React, { useContext, useState, useEffect } from 'react';
 import channelContext from '../../context/channels/channelContext';
-// import taskContext from '../../context/tasks/taskContext';
+import messageContext from '../../context/messages/messageContext';
 
 const FormMessage = () => {
 
     const channelsContext = useContext(channelContext);
     const { channel } = channelsContext;
 
-    // const tasksContext = useContext(taskContext);
-    // const { selectedtask, errortask, addTask, 
-    //     taskValidation, getTasks, updateTask, cleanTask } = tasksContext;
+    const messagesContext = useContext(messageContext);
+    const { errormessage, addMessage, messageValidation } = messagesContext;
 
     
 
@@ -19,7 +18,7 @@ const FormMessage = () => {
 
     })
 
-    // extraer el nombre del projecto
+    // get the content from message
     const { content } = message;
 
     if(!channel) return null;
@@ -35,27 +34,17 @@ const FormMessage = () => {
     }
 
     const handleSubmit = event => {
-        // event.preventDefault();
+        event.preventDefault();
 
-        // // Validar
-        // if(name.trim() === ''){
-        //     taskValidation();
-        //     return;
-        // }
+        // // Validation
+        if(content.trim() === ''){
+            messageValidation();
+            return;
+        }
 
-        // // check if edition of adding a new task
-        // if(selectedtask === null){
-        //     // new task
-        //     task.project_id = currentProject.id;
-        //     task.state = false;
-        //     addTask(task);
-        // } else {
-        //     // update task
-        //     updateTask(task);
-        //     // clean the task input
-        //     cleanTask();
-        // }
-
+       
+        message.channel_id = currentChannel.id;
+        addMessage(message);
         
 
         // // get the tasks and filter by current project
@@ -92,11 +81,11 @@ const FormMessage = () => {
                     />
                 </div>
             </form>
-            {/* {errortask ? 
+            {errormessage ? 
             (<p className="alert alert-danger">
                 Maybe, you forgot typing your message?...Try again
             </p>) 
-            : null} */}
+            : null}
         </div>
     );
 }
