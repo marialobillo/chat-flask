@@ -1,7 +1,7 @@
 import React, { Fragment, useContext } from 'react';
 import Message from './Message';
 import channelContext from '../../context/channels/channelContext';
-// import taskContext from '../../context/tasks/taskContext';
+import messageContext from '../../context/message/messageContext';
 
 const MessageList = () => {
 
@@ -17,8 +17,8 @@ const MessageList = () => {
     const { channel } = channelsContext;
 
     // get the tasks de cada projecto
-    // const tasksContext = useContext(taskContext);
-    // const { tasksproject } = tasksContext;
+    const messagesContext = useContext(messageContext);
+    const { messagesproject } = messagesContext;
 
     // if not current project
     if(!channel) return <h3>Select a Channel from the sidebar</h3>;
