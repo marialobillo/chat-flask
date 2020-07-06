@@ -52,9 +52,9 @@ const FormMessage = () => {
         getMessages(currentChannel.id)
 
         // // reiniciar el form
-        // setTask({
-        //     name: ''
-        // })
+        setMessage({
+            content: ''
+        })
     }
 
     return (
