@@ -16,9 +16,9 @@ const MessageList = () => {
     const channelsContext = useContext(channelContext);
     const { channel } = channelsContext;
 
-    // get the tasks de cada projecto
+    // get the message from each channel
     const messagesContext = useContext(messageContext);
-    const { messagesproject } = messagesContext;
+    const { messageschannel } = messagesContext;
 
     // if not current project
     if(!channel) return <h3>Select a Channel from the sidebar</h3>;
@@ -35,10 +35,10 @@ const MessageList = () => {
                 <h3 className="text-center">Channel : {currentChannel.name} </h3>
             </div>
             <ul className="panel">
-                {messagesChannel.length === 0 ? 
+                {messageschannel.length === 0 ? 
                     (<li className="message"><p>There is no messages</p></li>)
                     : 
-                        <div >{messagesChannel.map(message => (
+                        <div >{messageschannel.map(message => (
                                <Message
                                     key={message.id}
                                     message={message}
