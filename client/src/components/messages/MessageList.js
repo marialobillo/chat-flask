@@ -1,7 +1,7 @@
 import React, { Fragment, useContext } from 'react';
 import Message from './Message';
 import channelContext from '../../context/channels/channelContext';
-import messageContext from '../../context/message/messageContext';
+import messageContext from '../../context/messages/messageContext';
 
 const MessageList = () => {
 
