@@ -8,7 +8,8 @@ const FormMessage = () => {
     const { channel } = channelsContext;
 
     const messagesContext = useContext(messageContext);
-    const { errormessage, addMessage, messageValidation } = messagesContext;
+    const { errormessage, addMessage, messageValidation,
+        getMessages } = messagesContext;
 
     
 
@@ -48,7 +49,7 @@ const FormMessage = () => {
         
 
         // // get the tasks and filter by current project
-        // getTasks(currentProject.id)
+        getMessages(currentChannel.id)
 
         // // reiniciar el form
         // setTask({
