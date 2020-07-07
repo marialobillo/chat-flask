@@ -14,3 +14,6 @@ export const MESSAGE_STATE = 'MESSAGE_STATE';
 export const CURRENT_MESSAGE = 'CURRENT_MESSAGE';
 export const UPDATE_MESSAGE = 'UPDATE_MESSAGE';
 export const CLEAN_MESSAGE = 'CLEAN_MESSAGE';
+
+export const SHOW_ALERT = 'SHOW_ALERT';
+export const HIDE_ALERT = 'HIDE_ALERT';
