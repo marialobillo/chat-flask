@@ -9,14 +9,37 @@ import {
 
 
 const AlertState = props => {
+    const initialState = {
+        alert: null
+    }
+
+    const [state, dispatch] = useReducer(alertReducer, initialState);
+
+    // Functions
+    const showAlert = (message, category) => {
+        dispatch({
+            type: SHOW_ALERT, 
+            payload: {
+                message,
+                category
+            } 
+        });
+
+        setTimeout( () => {
+            dispatch({
+                type: HIDE_ALERT
+            })
+        }, 5000); 
+    }
 
     return (
         <alertContext.Provider
             value={{
-
+                alert: state.alert,
+                showAlert
             }}
         >
-
+            {props.children}
         </alertContext.Provider>
     );
 }
