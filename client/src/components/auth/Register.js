@@ -34,8 +34,15 @@ const Register = () => {
         }
 
         // password min 6 char
-
+        if(password.length < 6){
+            showAlert('Password must be 6 chars minimum', 'alert-danger');
+            return;
+        }
         // cofirm and password equal
+        if(password !== confirm){
+            showAlert('Password are not equal', 'alert-danger');
+            return;
+        }
 
         // To action
     }
