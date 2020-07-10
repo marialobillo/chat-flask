@@ -17,3 +17,10 @@ export const CLEAN_MESSAGE = 'CLEAN_MESSAGE';
 
 export const SHOW_ALERT = 'SHOW_ALERT';
 export const HIDE_ALERT = 'HIDE_ALERT';
+
+export const REGISTER_DONE = 'REGISTER_DONE';
+export const REGISTER_FAIL = 'REGISTER_FAIL';
+export const GET_USER = 'GET_USER';
+export const LOGIN_DONE = 'LOGIN_DONE';
+export const LOGIN_FAIL = 'LOGIN_FAIL';
+export const LOGOUT = 'LOGOUT';

@@ -9,19 +9,22 @@ import Channels from './components/channels/Channels';
 import ChannelState from './context/channels/channelState';
 import MessageState from './context/messages/messageState';
 import AlertState from './context/alerts/alertState';
+import AuthState from './context/authentication/authState';
 
 function App() {
   return (
     <ChannelState>
       <MessageState>
         <AlertState>
-          <Router>
-            <Switch>
-              <Route exact path="/" component={Login} />
-              <Route exact path="/register" component={Register} />
-              <Route exact path="/channels" component={Channels} />
-            </Switch>
-          </Router>
+          <AuthState>
+            <Router>
+              <Switch>
+                <Route exact path="/" component={Login} />
+                <Route exact path="/register" component={Register} />
+                <Route exact path="/channels" component={Channels} />
+              </Switch>
+            </Router>
+          </AuthState>
         </AlertState>
       </MessageState>
     </ChannelState>
