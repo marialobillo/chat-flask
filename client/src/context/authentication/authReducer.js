@@ -9,7 +9,19 @@ import {
 
 export default (state, action) => {
     switch (action.type) {
-        
+        case REGISTER_DONE:
+            return {
+                ...state,
+                authenticaed: true,
+                message: true
+            }
+
+        case REGISTER_FAIL:
+            return {
+                ...state, 
+                authenticaed: false,
+                message: action.payload
+            }
         
         default:
             return state;

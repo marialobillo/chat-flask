@@ -2,11 +2,15 @@ import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import AlertContext from '../../context/alerts/alertContext';
+import AuthContext from '../../context/authentication/authContext';
 
 const Register = () => {
 
     const alertContext = useContext(AlertContext);
     const { alert, showAlert } = alertContext;
+
+    const authContext = useContext(AuthContext);
+    const { registerUser } = authContext;
 
     const [user, setUser] = useState({
         username: '',
@@ -45,6 +49,10 @@ const Register = () => {
         }
 
         // To action
+        registerUser({
+            username, 
+            password
+        })
     }
     return (
         <div className="container text-center">
@@ -69,7 +77,7 @@ const Register = () => {
                     </div>
                     
                     <div className="form-group">
-                        <label hrmlFor="password">Password</label>
+                        <label htmlFor="password">Password</label>
                         <input 
                             type="password"
                             id="password"
@@ -82,7 +90,7 @@ const Register = () => {
                     </div>
 
                     <div className="form-group">
-                        <label hrmlFor="confirm">Confirm Password</label>
+                        <label htmlFor="confirm">Confirm Password</label>
                         <input 
                             type="password"
                             id="confirm"

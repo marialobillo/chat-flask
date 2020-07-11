@@ -46,7 +46,8 @@ const AuthState = props => {
                 token: state.token,
                 authenticated: state.authenticated,
                 user: state.user,
-                message: state.message
+                message: state.message,
+                registerUser 
             }}
         >
             {props.children}
