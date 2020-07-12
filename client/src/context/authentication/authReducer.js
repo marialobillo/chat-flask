@@ -12,7 +12,7 @@ export default (state, action) => {
         case REGISTER_DONE:
             return {
                 ...state,
-                authenticaed: true,
+                authenticated: action.payload,
                 message: true
             }
 
