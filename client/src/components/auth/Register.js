@@ -1,16 +1,22 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import AlertContext from '../../context/alerts/alertContext';
 import AuthContext from '../../context/authentication/authContext';
 
-const Register = () => {
+const Register = (props) => {
 
     const alertContext = useContext(AlertContext);
     const { alert, showAlert } = alertContext;
 
     const authContext = useContext(AuthContext);
-    const { registerUser } = authContext;
+    const { message, authenticated, registerUser } = authContext;
+
+    useEffect( () => {
+        if(authenticated){
+            props.history.push('/channels')
+        }
+    }, [message, authenticated, props.history]);
 
     const [user, setUser] = useState({
         username: '',
