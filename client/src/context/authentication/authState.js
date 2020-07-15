@@ -15,7 +15,7 @@ import {
 
 const AuthState = props => {
     const initialState = {
-        token: localStorage.getItem('token'),
+        // token: localStorage.getItem('token'),
         authenticated: null,
         user: null,
         message: null
@@ -26,18 +26,21 @@ const AuthState = props => {
     const registerUser = async data => {
         try {
             const response = await axiosClient.post('/api/users', data);
-            console.log(response.data);
 
             dispatch({
                 type: REGISTER_DONE,
                 payload: response.data.success
             })
         } catch (error) {
-            console.log(error);
+            console.log('Cuando ya existe el usuario')
+            const alert = {
+                message: 'Username already exists. Please try again.', 
+                category: 'alert-error'
+            }
 
             dispatch({
                 type: REGISTER_FAIL,
-                payload: false
+                payload: alert
             })
         }
     }

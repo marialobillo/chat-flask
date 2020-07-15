@@ -13,7 +13,7 @@ export default (state, action) => {
             return {
                 ...state,
                 authenticated: action.payload,
-                message: true
+                message: null
             }
 
         case REGISTER_FAIL:
