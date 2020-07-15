@@ -32,7 +32,6 @@ const AuthState = props => {
                 payload: response.data.success
             })
         } catch (error) {
-            console.log('Cuando ya existe el usuario')
             const alert = {
                 message: 'Username already exists. Please try again.', 
                 category: 'alert-danger'

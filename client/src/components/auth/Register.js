@@ -17,7 +17,7 @@ const Register = (props) => {
             props.history.push('/channels')
         }
         if(message){
-            
+           showAlert(message.message, message.category); 
         }
     }, [message, authenticated, props.history]);
 
