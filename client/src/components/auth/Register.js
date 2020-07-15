@@ -16,6 +16,9 @@ const Register = (props) => {
         if(authenticated){
             props.history.push('/channels')
         }
+        if(message){
+            
+        }
     }, [message, authenticated, props.history]);
 
     const [user, setUser] = useState({

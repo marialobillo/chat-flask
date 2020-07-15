@@ -35,7 +35,7 @@ const AuthState = props => {
             console.log('Cuando ya existe el usuario')
             const alert = {
                 message: 'Username already exists. Please try again.', 
-                category: 'alert-error'
+                category: 'alert-danger'
             }
 
             dispatch({
