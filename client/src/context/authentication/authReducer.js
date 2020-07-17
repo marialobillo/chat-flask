@@ -9,6 +9,7 @@ import {
 
 export default (state, action) => {
     switch (action.type) {
+        case LOGIN_DONE:
         case REGISTER_DONE:
             return {
                 ...state,

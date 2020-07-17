@@ -31,6 +31,7 @@ const AuthState = props => {
                 type: REGISTER_DONE,
                 payload: response.data.success
             })
+            getAuthenticatedUser();
         } catch (error) {
             console.log(error);
             const alert = {
@@ -53,10 +54,11 @@ const AuthState = props => {
 
         try {
             const response = await axiosClient.get(`/api/users/${state.user.id}`);
-            console.log('Response login: ', response);
+            console.log('Response login: ', response.data.data.id);
+            const id = response.data.data.id;
             dispatch({
                 type: GET_USER, 
-                payload: response.data
+                payload: id
             });
         } catch (error) {
             console.log(error);
@@ -69,7 +71,13 @@ const AuthState = props => {
     const loginUser = async data => {
         try {
            const response = await axiosClient.post('/api/login', data);
-           console.log('Login Response', response);
+           console.log('Login Response', response.data.data);
+            const id = response.data.data.id;
+           dispatch({
+               type: LOGIN_DONE,
+               payload: id
+           });
+           getAuthenticatedUser();
         } catch (error) {
             console.log(error);
             const alert = {
