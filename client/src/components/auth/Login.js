@@ -32,11 +32,16 @@ const Login = () => {
         event.preventDefault();
 
         // Validation
+        if(username.trim() === '' || password.trim() === ''){
+            showAlert('All fields are required. Please try again.', 'alert-danger');
+        }
 
         // To action
+        loginUser({username, password});
     }
     return (
         <div className="container text-center">
+            { alert ? (<div className={`alert ${alert.category}`}>{alert.message}</div>) : null}
             <div className="login-panel">
                 <h1>Login</h1>
 
