@@ -5,13 +5,23 @@ import AlertContext from '../../context/alerts/alertContext';
 import AuthContext from '../../context/authentication/authContext';
 
 
-const Login = () => {
+const Login = (props) => {
 
     const alertContext = useContext(AlertContext);
     const { alert, showAlert } = alertContext;
 
     const authContext = useContext(AuthContext);
     const { message, authenticated, loginUser } = authContext;
+
+
+    useEffect( () => {
+        // if(authenticated){
+        //     props.history.push('/channels')
+        // }
+        if(message){
+           showAlert(message.message, message.category); 
+        }
+    }, [message, authenticated, props.history]);
 
 
     const [user, setUser] = useState({
