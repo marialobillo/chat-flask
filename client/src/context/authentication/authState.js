@@ -32,6 +32,7 @@ const AuthState = props => {
                 payload: response.data.success
             })
         } catch (error) {
+            console.log(error);
             const alert = {
                 message: 'Username already exists. Please try again.', 
                 category: 'alert-danger'
@@ -44,6 +45,45 @@ const AuthState = props => {
         }
     }
 
+    const getAuthenticatedUser = async () => {
+
+        if(state.authenticated){
+
+        }
+
+        try {
+            const response = await axiosClient.get(`/api/users/${state.user.id}`);
+            console.log('Response login: ', response);
+            dispatch({
+                type: GET_USER, 
+                payload: response.data
+            });
+        } catch (error) {
+            console.log(error);
+            dispatch({
+                type: LOGIN_FAIL
+            })
+        }
+    }
+
+    const loginUser = async data => {
+        try {
+           const response = await axiosClient.post('/api/login', data);
+           console.log('Login Response', response);
+        } catch (error) {
+            console.log(error);
+            const alert = {
+                message: 'Username or password are incorrect. Please try again.', 
+                category: 'alert-danger'
+            }
+
+            dispatch({
+                type: LOGIN_FAIL,
+                payload: alert
+            })
+        }
+    }
+
     return (
         <AuthContext.Provider
             value={{
@@ -51,7 +91,9 @@ const AuthState = props => {
                 authenticated: state.authenticated,
                 user: state.user,
                 message: state.message,
-                registerUser 
+                registerUser,
+                getAuthenticatedUser,
+                loginUser 
             }}
         >
             {props.children}

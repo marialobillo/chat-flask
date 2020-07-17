@@ -15,13 +15,20 @@ export default (state, action) => {
                 authenticated: action.payload,
                 message: null
             }
-
+        case LOGIN_FAIL:
         case REGISTER_FAIL:
             return {
                 ...state, 
-                authenticaed: false,
+                authenticated: false,
                 message: action.payload
             }
+        case GET_USER:
+            return {
+                ...state, 
+                user: action.payload,
+                
+            }
+        
         
         default:
             return state;

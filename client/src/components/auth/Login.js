@@ -1,7 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 
+import AlertContext from '../../context/alerts/alertContext';
+import AuthContext from '../../context/authentication/authContext';
+
+
 const Login = () => {
+
+    const alertContext = useContext(AlertContext);
+    const { alert, showAlert } = alertContext;
+
+    const authContext = useContext(AuthContext);
+    const { message, authenticated, loginUser } = authContext;
+
 
     const [user, setUser] = useState({
         username: '',
