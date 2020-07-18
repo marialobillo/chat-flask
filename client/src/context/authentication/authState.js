@@ -22,16 +22,18 @@ const AuthState = props => {
     }
 
     const [state, dispatch] = useReducer(AuthReducer, initialState);
+     
 
     const registerUser = async data => {
         try {
             const response = await axiosClient.post('/api/users', data);
-
+            console.log('Lo que trae el registro user', response.data.data);
+            const user = response.data.data;
             dispatch({
                 type: REGISTER_DONE,
                 payload: response.data.success
             })
-            getAuthenticatedUser();
+            getAuthenticatedUser(user);
         } catch (error) {
             console.log(error);
             const alert = {
@@ -46,19 +48,20 @@ const AuthState = props => {
         }
     }
 
-    const getAuthenticatedUser = async () => {
+    const getAuthenticatedUser = async (authUser) => {
 
         if(state.authenticated){
 
         }
 
         try {
-            const response = await axiosClient.get(`/api/users/${state.user.id}`);
-            console.log('Response login: ', response.data.data.id);
-            const id = response.data.data.id;
+            // const response = await axiosClient.get(`/api/users/${user.id}`);
+            // console.log('Getting User Auth: ', response.data.data);
+            // const authUser = response.data.data;
+            console.log('El authUser que paso como argumento', authUser);
             dispatch({
                 type: GET_USER, 
-                payload: id
+                payload: authUser
             });
         } catch (error) {
             console.log(error);
@@ -72,12 +75,12 @@ const AuthState = props => {
         try {
            const response = await axiosClient.post('/api/login', data);
            console.log('Login Response', response.data.data);
-            const id = response.data.data.id;
+            const authUser = response.data.data;
            dispatch({
                type: LOGIN_DONE,
-               payload: id
+               payload: authUser.id
            });
-           getAuthenticatedUser();
+           getAuthenticatedUser(authUser);
         } catch (error) {
             console.log(error);
             const alert = {
