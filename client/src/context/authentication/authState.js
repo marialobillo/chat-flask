@@ -27,7 +27,6 @@ const AuthState = props => {
     const registerUser = async data => {
         try {
             const response = await axiosClient.post('/api/users', data);
-            console.log('Lo que trae el registro user', response.data.data);
             const user = response.data.data;
             dispatch({
                 type: REGISTER_DONE,
@@ -58,7 +57,6 @@ const AuthState = props => {
             // const response = await axiosClient.get(`/api/users/${user.id}`);
             // console.log('Getting User Auth: ', response.data.data);
             // const authUser = response.data.data;
-            console.log('El authUser que paso como argumento', authUser);
             dispatch({
                 type: GET_USER, 
                 payload: authUser

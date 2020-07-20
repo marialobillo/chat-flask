@@ -15,9 +15,9 @@ const Login = (props) => {
 
 
     useEffect( () => {
-        // if(authenticated){
-        //     props.history.push('/channels')
-        // }
+        if(authenticated){
+            props.history.push('/channels')
+        }
         if(message){
            showAlert(message.message, message.category); 
         }
