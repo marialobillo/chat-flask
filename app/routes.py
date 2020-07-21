@@ -1,9 +1,11 @@
+import jwt
 from flask import request
 from flask import Blueprint
 
 from .responses import response
 from .responses import not_found
 from .responses import bad_request
+from .responses import auth_response
 
 from .models.user import User
 from .models.channel import Channel
@@ -25,6 +27,7 @@ def get_user(id):
         return not_found()
     return response(user.serialize())
 
+# auth response  for login
 @api_v1.route('/login', methods=['POST'])
 def get_login():
     json = request.get_json(force = True)
@@ -38,9 +41,14 @@ def get_login():
 
     if user is None:
         return not_found()
+    # print('la palabra secreta', SECRET_WORD)
+    token = jwt.encode({'id': user.id}, 
+                            'theredcatisblue', 
+                            algorithm='HS256')
 
-    return response(user.serialize()) 
+    return auth_response(user.serialize(), token) 
 
+# auth response
 @api_v1.route('/users', methods=['POST'])
 def create_user():
     json = request.get_json(force = True)
