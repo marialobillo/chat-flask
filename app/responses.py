@@ -27,3 +27,12 @@ def bad_request():
         'code': 400
     }), 400
 
+def auth_response(data, token):
+    return jsonify(
+        {
+            'success': True, 
+            'token': token, 
+            'data': data,
+            'code': 200
+        }
+    ), 200
