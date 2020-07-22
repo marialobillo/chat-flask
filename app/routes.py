@@ -66,8 +66,12 @@ def create_user():
     user = User.new(json['username'], json['password'])
 
     if user.save():
-        return response(user.serialize())
-
+         # print('la palabra secreta', SECRET_WORD)
+        token = jwt.encode({'id': user.id}, 
+                            'theredcatisblue', 
+                            algorithm='HS256')
+        return auth_response(user.serialize(), token) 
+        
     return bad_request()
 
 
