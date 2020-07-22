@@ -1,6 +1,7 @@
 import jwt
 from flask import request
 from flask import Blueprint
+from config import config
 
 from .responses import response
 from .responses import not_found
@@ -12,7 +13,7 @@ from .models.channel import Channel
 from .models.message import Message
 
 api_v1 = Blueprint('api', __name__, url_prefix='/api')
-
+environment = config['development']
 
 # endpoints for users
 @api_v1.route('/users', methods=['GET'])
@@ -43,7 +44,7 @@ def get_login():
         return not_found()
     # print('la palabra secreta', SECRET_WORD)
     token = jwt.encode({'id': user.id}, 
-                            'theredcatisblue', 
+                            environment.SECRET_WORD, 
                             algorithm='HS256')
 
     return auth_response(user.serialize(), token) 
@@ -68,7 +69,7 @@ def create_user():
     if user.save():
          # print('la palabra secreta', SECRET_WORD)
         token = jwt.encode({'id': user.id}, 
-                            'theredcatisblue', 
+                            environment.SECRET_WORD, 
                             algorithm='HS256')
         return auth_response(user.serialize(), token) 
         
