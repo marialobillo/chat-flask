@@ -75,6 +75,28 @@ def create_user():
         
     return bad_request()
 
+@api_v1.route('/token', methods=['POST'])
+def get_user_by_token():
+    json = request.get_json(force = True)
+
+    if json.get('auth_token') is None:
+        return bad_request()
+
+    user_data = jwt.decode(json.get('auth_token'), 
+                    environment.SECRET_WORD, 
+                    algorithms='HS256')
+
+    id = user_data['id']
+
+    auth_user = User.query.filter_by(id=id).first()
+    
+    print(auth_user)
+
+    if auth_user is None:
+        return not_found()
+
+    return auth_response(auth_user.serialize(), json.get('auth_token'))
+
 
 @api_v1.route('/users/<id>', methods=['PUT'])
 def update_user(id):
@@ -91,6 +113,8 @@ def update_user(id):
         return response(user.serialize())
 
     return bad_request()
+
+
 
 @api_v1.route('/users/<id>', methods=['DELETE'])
 def delete_user(id):
