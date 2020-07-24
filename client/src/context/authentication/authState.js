@@ -30,7 +30,7 @@ const AuthState = props => {
             const user = response.data.data;
             dispatch({
                 type: REGISTER_DONE,
-                payload: response.data.success
+                payload: response.data.token
             })
             getAuthenticatedUser(user);
         } catch (error) {
