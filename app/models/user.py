@@ -1,5 +1,10 @@
 from . import db 
-from sqlalchemy.event import listen 
+from sqlalchemy.event import listen
+import jwt 
+import json
+from config import config
+
+environment = config['development']
 
 
 class User(db.Model):
@@ -13,10 +18,23 @@ class User(db.Model):
     
     def serialize(self):
         return {
-            'id': self.id,
-            'username': self.username, 
-            'password': self.password,
-            'created_at': self.created_at
+            "id": self.id,
+            "username": self.username, 
+            "password": self.password,
+            "created_at": self.created_at
+        }
+
+    def auth_serialize(self):
+        token = jwt.encode({'id': self.id}, 
+                            environment.SECRET_WORD, 
+                            algorithm='HS256')
+        print('THE TOKEN', token)
+        return {
+            "id": self.id,
+            "username": self.username, 
+            "password": self.password,
+            "created_at": self.created_at,
+            "token": token.decode('utf-8')
         }
 
     @classmethod
