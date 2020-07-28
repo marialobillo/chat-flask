@@ -42,14 +42,13 @@ def get_login():
 
     if user is None:
         return not_found()
-    # print('la palabra secreta', SECRET_WORD)
     token = jwt.encode({'id': user.id}, 
                             environment.SECRET_WORD, 
                             algorithm='HS256')
 
     return auth_response(user.serialize(), token) 
 
-# auth response
+# auth response for registration
 @api_v1.route('/users', methods=['POST'])
 def create_user():
     json = request.get_json(force = True)
@@ -67,11 +66,12 @@ def create_user():
     user = User.new(json['username'], json['password'])
 
     if user.save():
-         # print('la palabra secreta', SECRET_WORD)
         token = jwt.encode({'id': user.id}, 
                             environment.SECRET_WORD, 
                             algorithm='HS256')
-        return auth_response(user.serialize(), token) 
+        # return auth_response(user.serialize(), token) 
+        print('token', token)
+        return response(user.serialize())
         
     return bad_request()
 
