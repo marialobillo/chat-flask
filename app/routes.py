@@ -42,11 +42,12 @@ def get_login():
 
     if user is None:
         return not_found()
-    # token = jwt.encode({'id': user.id}, 
-    #                         environment.SECRET_WORD, 
-    #                         algorithm='HS256')
 
-    return response(user.auth_serialize()) 
+    token = jwt.encode({'id': user.id}, 
+                            environment.SECRET_WORD, 
+                            algorithm='HS256')
+
+    return auth_response(user.serialize(), token.decode('utf-8')) 
 
 # auth response for registration
 @api_v1.route('/users', methods=['POST'])
@@ -71,7 +72,7 @@ def create_user():
                             algorithm='HS256')
         # return auth_response(user.serialize(), token)
         # print('token', token)
-        return response(user.serialize())
+        return auth_response(user.serialize())
         
     return bad_request()
 
@@ -81,6 +82,8 @@ def get_user_by_token():
 
     if json.get('auth_token') is None:
         return bad_request()
+
+    token = json.get('auth_token')
 
     user_data = jwt.decode(json.get('auth_token'), 
                     environment.SECRET_WORD, 
@@ -95,7 +98,7 @@ def get_user_by_token():
     if auth_user is None:
         return not_found()
 
-    return auth_response(auth_user.serialize(), json.get('auth_token'))
+    return auth_response(auth_user.serialize(), token.decode('utf-8'))
 
 
 @api_v1.route('/users/<id>', methods=['PUT'])
