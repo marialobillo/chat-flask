@@ -83,8 +83,6 @@ def get_user_by_token():
     if json.get('auth_token') is None:
         return bad_request()
 
-    # token = json.get('auth_token')
-
     user_data = jwt.decode(json.get('auth_token'), 
                     environment.SECRET_WORD, 
                     algorithms='HS256')

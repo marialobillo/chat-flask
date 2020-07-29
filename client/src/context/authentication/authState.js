@@ -71,14 +71,14 @@ const AuthState = props => {
 
     const loginUser = async data => {
         try {
-           const response = await axiosClient.post('/api/login', data);
-           console.log('Login Response', response.data.data);
+            const response = await axiosClient.post('/api/login', data);
+            console.log('Login Response', response.data.data);
             const authUser = response.data.data;
-           dispatch({
-               type: LOGIN_DONE,
-               payload: authUser.id
-           });
-           getAuthenticatedUser(authUser);
+            dispatch({
+                type: LOGIN_DONE,
+                payload: authUser.id
+            });
+            getAuthenticatedUser(authUser);
         } catch (error) {
             console.log(error);
             const alert = {
