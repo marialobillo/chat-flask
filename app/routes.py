@@ -70,8 +70,6 @@ def create_user():
         token = jwt.encode({'id': user.id}, 
                             environment.SECRET_WORD, 
                             algorithm='HS256')
-        # return auth_response(user.serialize(), token)
-        # print('token', token)
         return auth_response(user.serialize(), token.decode('utf-8'))
         
     return bad_request()
@@ -88,8 +86,6 @@ def get_user_by_token():
                     algorithms='HS256')
 
     id = user_data['id']
-
-    print('the user auth', id)
 
     auth_user = User.query.filter_by(id=id).first()
     

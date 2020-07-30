@@ -28,7 +28,6 @@ class User(db.Model):
         token = jwt.encode({'id': self.id}, 
                             environment.SECRET_WORD, 
                             algorithm='HS256')
-        print('THE TOKEN', token)
         return {
             "id": self.id,
             "username": self.username, 

@@ -72,7 +72,6 @@ const AuthState = props => {
     const loginUser = async data => {
         try {
             const response = await axiosClient.post('/api/login', data);
-            console.log('Login Response', response.data.data);
             const authUser = response.data.data;
             dispatch({
                 type: LOGIN_DONE,
