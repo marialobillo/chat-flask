@@ -76,7 +76,7 @@ const AuthState = props => {
             const authUser = response.data.data;
             dispatch({
                 type: LOGIN_DONE,
-                payload: authUser.id
+                payload: response.data.token
             });
             getAuthenticatedUser(authUser);
         } catch (error) {
