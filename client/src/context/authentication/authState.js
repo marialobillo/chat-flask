@@ -32,7 +32,7 @@ const AuthState = props => {
                 type: REGISTER_DONE,
                 payload: response.data.token
             })
-            getAuthenticatedUser(user);
+            getAuthenticatedUser();
         } catch (error) {
             console.log(error);
             const alert = {
@@ -47,25 +47,29 @@ const AuthState = props => {
         }
     }
 
-    const getAuthenticatedUser = async (authUser) => {
-
-        if(state.authenticated){
-
+    const getAuthenticatedUser = async () => {
+        const token = localStorage.getItem('token');
+        let auth_token = {};
+        if(token){
+            // TODO get user authenticated from token
+            auth_token = {
+                "auth_token": token
+            };
         }
 
         try {
-            // const response = await axiosClient.get(`/api/users/${user.id}`);
-            // console.log('Getting User Auth: ', response.data.data);
-            // const authUser = response.data.data;
+            const response = await axiosClient.post('/api/token', auth_token);
+            console.log('Response token ->', response);
+            const authenticatedUser = [];
             dispatch({
                 type: GET_USER, 
-                payload: authUser
+                payload: authenticatedUser
             });
         } catch (error) {
             console.log(error);
-            dispatch({
-                type: LOGIN_FAIL
-            })
+            // dispatch({
+            //     type: LOGIN_FAIL
+            // })
         }
     }
 
@@ -77,7 +81,7 @@ const AuthState = props => {
                 type: LOGIN_DONE,
                 payload: response.data.token
             });
-            getAuthenticatedUser(authUser);
+            getAuthenticatedUser();
         } catch (error) {
             console.log(error);
             const alert = {
