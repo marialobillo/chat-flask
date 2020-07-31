@@ -80,7 +80,6 @@ class TestAPI(unittest.TestCase):
         
 
 
-
     # tests for channels
     def test_get_all_channels(self):
         response = self.client.get(path = self.channel_path)

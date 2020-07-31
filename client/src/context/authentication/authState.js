@@ -67,9 +67,9 @@ const AuthState = props => {
             });
         } catch (error) {
             console.log(error);
-            // dispatch({
-            //     type: LOGIN_FAIL
-            // })
+            dispatch({
+                type: LOGIN_FAIL
+            })
         }
     }
 
