@@ -59,8 +59,8 @@ const AuthState = props => {
 
         try {
             const response = await axiosClient.post('/api/token', auth_token);
-            console.log('Response token ->', response);
-            const authenticatedUser = [];
+            console.log('Authenticated User ->', response.data.data);
+            const authenticatedUser = response.data.data;
             dispatch({
                 type: GET_USER, 
                 payload: authenticatedUser
