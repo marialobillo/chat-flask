@@ -76,11 +76,11 @@ const AuthState = props => {
     const loginUser = async data => {
         try {
             const response = await axiosClient.post('/api/login', data);
-            console.log('En el login', response.data.data);
-            const authenticatedUser = response.data.data;
+            console.log('En el login', response.data.token);
+            const auth_token = response.data.token;
             dispatch({
                 type: LOGIN_DONE,
-                payload: authenticatedUser
+                payload: auth_token
             });
             getAuthenticatedUser();
         } catch (error) {

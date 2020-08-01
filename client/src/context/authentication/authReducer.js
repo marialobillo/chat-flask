@@ -11,11 +11,10 @@ export default (state, action) => {
     switch (action.type) {
         case LOGIN_DONE:
         case REGISTER_DONE:
-            console.log('THE TOKEN', action.payload)
             localStorage.setItem('token', action.payload)
             return {
                 ...state,
-                authenticated: true,
+                authenticated: action.payload,
                 message: null
             }
         case LOGIN_FAIL:
