@@ -10,6 +10,7 @@ import ChannelState from './context/channels/channelState';
 import MessageState from './context/messages/messageState';
 import AlertState from './context/alerts/alertState';
 import AuthState from './context/authentication/authState';
+import PrivateRoute from './components/routes/PrivateRoute';
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
               <Switch>
                 <Route exact path="/" component={Login} />
                 <Route exact path="/register" component={Register} />
-                <Route exact path="/channels" component={Channels} />
+                <PrivateRoute exact path="/channels" component={Channels} />
               </Switch>
             </Router>
           </AuthState>
