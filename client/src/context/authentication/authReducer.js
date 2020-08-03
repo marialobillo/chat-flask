@@ -14,22 +14,25 @@ export default (state, action) => {
             localStorage.setItem('token', action.payload)
             return {
                 ...state,
-                authenticated: action.payload,
+                authenticated: true,
                 message: null
             }
+        case LOGOUT:
         case LOGIN_FAIL:
         case REGISTER_FAIL:
             localStorage.removeItem('token');
             return {
                 ...state,
                 token: null, 
-                authenticated: false,
-                message: action.payload
+                authenticated: null,
+                message: action.payload,
+                user: null
             }
         case GET_USER:
             return {
                 ...state, 
                 user: action.payload,
+                authenticated: true
                 
             }
         

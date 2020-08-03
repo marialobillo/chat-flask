@@ -5,7 +5,7 @@ const Nav = () => {
 
     // User
     const authContext = useContext(AuthContext);
-    const { user, getAuthenticatedUser } = authContext;
+    const { user, getAuthenticatedUser, logoutUser } = authContext;
 
     useEffect( () => {
         getAuthenticatedUser();
@@ -35,7 +35,13 @@ const Nav = () => {
 
 
                     <li className="nav-item right">
-                        <a className="nav-link" href="#">Logout</a>
+                        <button 
+                            class="btn btn-blank text-white"
+                            onClick={() => logoutUser()}                            
+                            >
+                            Logout
+                        </button>
+
                     </li>
                 </ul>
     
