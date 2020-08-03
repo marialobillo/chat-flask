@@ -1,6 +1,16 @@
-import React from 'react';
+import React, { useContext, useEffect} from 'react';
+import AuthContext from '../../context/authentication/authContext';
 
 const Nav = () => {
+
+    // User
+    const authContext = useContext(AuthContext);
+    const { user, getAuthenticatedUser } = authContext;
+
+    useEffect( () => {
+        getAuthenticatedUser();
+    }, []);
+
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
           
@@ -8,11 +18,15 @@ const Nav = () => {
   
             <div className="collapse navbar-collapse" id="navbarColor01">
         
+                
                 <ul className="navbar-nav mr-auto">
 
-                    <li className="nav-item">
-                        <span className="nav-link" href="#">Hi, User</span>
-                    </li>
+                    {user ? 
+                        <li className="nav-item">
+                            <span className="nav-link" href="#">Hi, { user.username }</span>
+                        </li>
+                                        
+                    : null}
                 
                     
                 </ul>
