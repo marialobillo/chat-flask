@@ -50,14 +50,14 @@ const ChannelState = props => {
     }
 
     const addChannel = async channel => {
-        // add project to the state 
-        dispatch({
-            type: ADD_CHANNEL,
-            payload: channel
-        })
+
         try {
             const response = await axiosClient.post('/api/channels', channel);
-            console.log(response)
+            // add project to the state 
+            dispatch({
+                type: ADD_CHANNEL,
+                payload: response.data.data
+            })
         } catch (error) {
             console.log(error);
         }
