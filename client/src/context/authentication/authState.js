@@ -18,7 +18,8 @@ const AuthState = props => {
         token: localStorage.getItem('token'),
         authenticated: null,
         user: null,
-        message: null
+        message: null,
+        loading: true
     }
 
     const [state, dispatch] = useReducer(AuthReducer, initialState);
@@ -112,6 +113,7 @@ const AuthState = props => {
                 authenticated: state.authenticated,
                 user: state.user,
                 message: state.message,
+                loading: state.loading,
                 registerUser,
                 getAuthenticatedUser,
                 loginUser,
