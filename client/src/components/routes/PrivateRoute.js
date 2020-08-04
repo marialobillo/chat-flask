@@ -6,7 +6,11 @@ import AuthContext from '../../context/authentication/authContext';
 const PrivateRoute = ({ component: Component, ...props }) => {
 
     const authContext = useContext(AuthContext);
-    const { authenticated } = authContext;
+    const { authenticated, getAuthenticatedUser } = authContext;
+
+    useEffect(() => {
+        getAuthenticatedUser();
+    }, []);
 
     return (
         <Route { ...props } render={ props => !authenticated ? (

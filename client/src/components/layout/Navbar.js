@@ -36,7 +36,7 @@ const Nav = () => {
 
                     <li className="nav-item right">
                         <button 
-                            class="btn btn-blank text-white"
+                            className="btn btn-blank text-white"
                             onClick={() => logoutUser()}                            
                             >
                             Logout
