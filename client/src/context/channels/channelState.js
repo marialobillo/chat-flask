@@ -1,6 +1,4 @@
 import React, { useReducer } from 'react';
-import {v4 as uuidv4} from 'uuid';
-
 
 import channelContext from './channelContext';
 import channelReducer from './channelReducer';
@@ -50,7 +48,6 @@ const ChannelState = props => {
     }
 
     const addChannel = channel => {
-        channel.id = uuidv4();
         // add project to the state 
         dispatch({
             type: ADD_CHANNEL, 
