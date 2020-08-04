@@ -20,8 +20,8 @@ class Channel(db.Model):
         }
 
     @classmethod
-    def new(cls, name, description, created_at):
-        return Channel(name=name, description=description, created_at=created_at)
+    def new(cls, name):
+        return Channel(name=name, description="Description channel")
 
     def save(self):
         try:

@@ -3,14 +3,16 @@ import React, { useReducer } from 'react';
 import channelContext from './channelContext';
 import channelReducer from './channelReducer';
 
-import { 
-    FORM_CHANNEL, 
-    GET_CHANNELS, 
+import {
+    FORM_CHANNEL,
+    GET_CHANNELS,
     ADD_CHANNEL,
     FORM_VALIDATION,
     CURRENT_CHANNEL,
     DELETE_CHANNEL
-    } from '../../types';
+} from '../../types';
+
+import axiosClient from '../../config/axios';
 
 
 
@@ -22,9 +24,9 @@ const ChannelState = props => {
         { id: 3, name: 'Python' },
         { id: 4, name: 'TDD' },
     ];
-    
+
     const initialState = {
-        channels : [],
+        channels: [],
         channelForm: false,
         formerror: false,
         channel: null
@@ -47,12 +49,18 @@ const ChannelState = props => {
         })
     }
 
-    const addChannel = channel => {
+    const addChannel = async channel => {
         // add project to the state 
         dispatch({
-            type: ADD_CHANNEL, 
+            type: ADD_CHANNEL,
             payload: channel
         })
+        try {
+            const response = await axiosClient.post('/api/channels', channel);
+            console.log(response)
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     const showError = () => {
@@ -64,7 +72,7 @@ const ChannelState = props => {
 
     const currentChannel = channelId => {
         dispatch({
-            type: CURRENT_CHANNEL, 
+            type: CURRENT_CHANNEL,
             payload: channelId
         })
     }

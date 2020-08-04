@@ -146,13 +146,13 @@ def create_channel():
     if json.get('name') is None:
         return bad_request()
 
-    if json.get('description') is None:
-        return bad_request()
+    # if json.get('description') is None:
+    #     return bad_request()
 
-    if json.get('created_at') is None:
-        return bad_request()
+    # if json.get('created_at') is None:
+    #     return bad_request()
 
-    channel = Channel.new(json['name'], json['description'], json['created_at'])
+    channel = Channel.new(json['name'])
 
     if channel.save():
         return response(channel.serialize())
