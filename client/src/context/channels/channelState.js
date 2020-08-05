@@ -18,13 +18,6 @@ import axiosClient from '../../config/axios';
 
 const ChannelState = props => {
 
-    const channels = [
-        { id: 1, name: 'General' },
-        { id: 2, name: 'Javascript' },
-        { id: 3, name: 'Python' },
-        { id: 4, name: 'TDD' },
-    ];
-
     const initialState = {
         channels: [],
         channelForm: false,
@@ -42,11 +35,16 @@ const ChannelState = props => {
         })
     }
 
-    const getChannels = () => {
-        dispatch({
-            type: GET_CHANNELS,
-            payload: channels
-        })
+    const getChannels = async () => {
+        try {
+            const response = await axiosClient.get('/api/channels');
+            dispatch({
+                type: GET_CHANNELS,
+                payload: response.data.data
+            });     
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     const addChannel = async channel => {
