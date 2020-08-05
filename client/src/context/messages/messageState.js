@@ -13,10 +13,12 @@ import {
     CLEAN_MESSAGE 
 } from '../../types';
 
+import axiosClient from '../../config/axios';
+
 
 const MessageState = props => {
     const initialState = {
-        messageschannel: null,
+        messageschannel: [],
         errormessage: false,
         selectedmessage: null
     }
@@ -34,11 +36,18 @@ const MessageState = props => {
     }
 
     // add a task
-    const addMessage = message => {
-        dispatch({
-            type: ADD_MESSAGE, 
-            payload: message
-        })
+    const addMessage = async message => {
+        console.log('the message', message);
+        try {
+            const response = await axiosClient.post('/api/messages', message);
+            console.log('ADD MESSAGE', response);
+            dispatch({
+                type: ADD_MESSAGE, 
+                payload: message
+            })
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     // Valida y muestra un error en caso de que sea necesario

@@ -14,12 +14,12 @@ export default (state, action) => {
         case MESSAGES_CHANNEL:
             return {
                 ...state,
-                messageschannel: state.messages.filter(message => message.channel_id === action.payload)
+                messageschannel: state.messageschannel.filter(message => message.channel_id === action.payload)
             }
         case ADD_MESSAGE:
             return {
                 ...state, 
-                messages: [...state.messages, action.payload],
+                messageschannel: [...state.messageschannel, action.payload],
                 errormessage: false
             }
 
@@ -31,14 +31,14 @@ export default (state, action) => {
         case DELETE_MESSAGE:
             return {
                 ...state, 
-                messages: state.messages.filter(message => message.id !== action.payload)
+                messageschannel: state.messageschannel.filter(message => message.id !== action.payload)
             }
 
         case UPDATE_MESSAGE:
         case MESSAGE_STATE:
             return {
                 ...state, 
-                messages: state.messages.map(message => message.id === action.payload.id ? 
+                messageschannel: state.messageschannel.map(message => message.id === action.payload.id ? 
                     action.payload : message)
             }
 
