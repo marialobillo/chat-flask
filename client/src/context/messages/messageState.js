@@ -1,7 +1,6 @@
 import React, { useReducer } from 'react';
 import MessageContext from './messageContext';
 import MessageReducer from './messageReducer';
-import {v4 as uuidv4} from 'uuid';
 
 import { 
     MESSAGES_CHANNEL,
@@ -17,19 +16,6 @@ import {
 
 const MessageState = props => {
     const initialState = {
-        messages: [
-            { id: 0, content: 'Elegir platarforma', channel_id: 1},
-            { id: 1, content: 'Choose colors', channel_id: 2},
-            { id: 2, content: 'Do the border', channel_id: 3},
-            { id: 3, content: 'Payment platforms', channel_id: 4},
-            { id: 4, content: 'Elegir platarforma', channel_id: 2},
-            { id: 5, content: 'Choose colors', channel_id: 3},
-            { id: 6, content: 'Do the border', channel_id: 4},
-            { id: 7, content: 'Payment platforms', channel_id: 1},
-            { id: 8, content: 'Elegir platarforma', channel_id: 3},
-            { id: 9, content: 'Choose colors', channel_id: 2},
-            { id: 11, content: 'The new reality', channel_id: 1}
-        ],
         messageschannel: null,
         errormessage: false,
         selectedmessage: null
@@ -49,7 +35,6 @@ const MessageState = props => {
 
     // add a task
     const addMessage = message => {
-        message.id = uuidv4();
         dispatch({
             type: ADD_MESSAGE, 
             payload: message
@@ -98,7 +83,6 @@ const MessageState = props => {
     return (
         <MessageContext.Provider
             value={{
-                messages: state.messages,
                 messageschannel: state.messageschannel,
                 errormessage: state.errormessage,
                 selectedmessage: state.selectedmessage,
