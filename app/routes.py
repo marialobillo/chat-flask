@@ -112,7 +112,6 @@ def update_user(id):
     return bad_request()
 
 
-
 @api_v1.route('/users/<id>', methods=['DELETE'])
 def delete_user(id):
     user = User.query.filter_by(id=id).first()
@@ -123,12 +122,14 @@ def delete_user(id):
     if user.delete():
         return response(user.serialize())
     return bad_request()
+    
 
 # endpoints for channels
 @api_v1.route('/channels', methods=['GET'])
 def get_channels():
     channels = Channel.query.all()
     return response([channel.serialize() for channel in channels]) 
+
 
 @api_v1.route('/channels/<id>', methods=['GET'])
 def get_channel(id):
@@ -137,6 +138,7 @@ def get_channel(id):
         return not_found()
     return response(channel.serialize())
 
+
 @api_v1.route('/channels', methods=['POST'])
 def create_channel():
     json = request.get_json(force = True)
@@ -144,18 +146,13 @@ def create_channel():
     if json.get('name') is None:
         return bad_request()
 
-    # if json.get('description') is None:
-    #     return bad_request()
-
-    # if json.get('created_at') is None:
-    #     return bad_request()
-
     channel = Channel.new(json['name'])
 
     if channel.save():
         return response(channel.serialize())
 
     return bad_request() 
+
 
 @api_v1.route('/channels/<id>', methods=['PUT'])
 def update_channel(id):
