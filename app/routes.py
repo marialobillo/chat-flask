@@ -88,8 +88,6 @@ def get_user_by_token():
     id = user_data['id']
 
     auth_user = User.query.filter_by(id=id).first()
-    
-    print(auth_user)
 
     if auth_user is None:
         return not_found()
@@ -255,7 +253,6 @@ def delete_message(id):
     if message is None:
         return not_found()
 
-    print(message)
     if message.delete():
         return response(message.serialize())
     return bad_request()

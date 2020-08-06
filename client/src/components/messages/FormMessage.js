@@ -1,8 +1,12 @@
 import React, { useContext, useState, useEffect } from 'react';
 import channelContext from '../../context/channels/channelContext';
 import messageContext from '../../context/messages/messageContext';
+import authContext from '../../context/authentication/authContext';
 
 const FormMessage = () => {
+
+    const AuthContext = useContext(authContext);
+    const { user } = AuthContext;
 
     const channelsContext = useContext(channelContext);
     const { channel } = channelsContext;
@@ -43,7 +47,7 @@ const FormMessage = () => {
             return;
         }
 
-       
+        message.user_id = user.id;
         message.channel_id = currentChannel.id;
         addMessage(message);
         

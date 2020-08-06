@@ -28,19 +28,23 @@ const MessageState = props => {
 
 
     // Get the task from a project
-    const getMessages = channelId => {
-        dispatch({
-            type: MESSAGES_CHANNEL,
-            payload: channelId
-        })
+    const getMessages = async channelId => {
+        
+        try {
+            const response = await axiosClient.get(`/api/bychannel/${channelId}`); 
+            dispatch({
+                type: MESSAGES_CHANNEL,
+                payload: response.data.data
+            })
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     // add a task
     const addMessage = async message => {
-        console.log('the message', message);
         try {
             const response = await axiosClient.post('/api/messages', message);
-            console.log('ADD MESSAGE', response);
             dispatch({
                 type: ADD_MESSAGE, 
                 payload: message

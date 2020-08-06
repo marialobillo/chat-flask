@@ -14,7 +14,7 @@ export default (state, action) => {
         case MESSAGES_CHANNEL:
             return {
                 ...state,
-                messageschannel: state.messageschannel.filter(message => message.channel_id === action.payload)
+                messageschannel: action.payload
             }
         case ADD_MESSAGE:
             return {
