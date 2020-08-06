@@ -3,7 +3,6 @@ import {
     ADD_MESSAGE,
     MESSAGE_VALIDATION,
     DELETE_MESSAGE,
-    MESSAGE_STATE,
     CURRENT_MESSAGE,
     UPDATE_MESSAGE,
     CLEAN_MESSAGE 
@@ -35,7 +34,6 @@ export default (state, action) => {
             }
 
         case UPDATE_MESSAGE:
-        case MESSAGE_STATE:
             return {
                 ...state, 
                 messageschannel: state.messageschannel.map(message => message.id === action.payload.id ? 

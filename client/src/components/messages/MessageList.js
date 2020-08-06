@@ -5,14 +5,6 @@ import messageContext from '../../context/messages/messageContext';
 
 const MessageList = () => {
 
-    const messagesChannel = [
-        {content: 'Hi, everyone!'},
-        {content: 'This is a great channel!'},
-        {content: 'The 4th message'},
-        {content: 'How are you today?'},
-
-    ]
-
     const channelsContext = useContext(channelContext);
     const { channel } = channelsContext;
 
@@ -24,10 +16,6 @@ const MessageList = () => {
     if(!channel) return <h3>Select a Channel from the sidebar</h3>;
 
     const [currentChannel] = channel;
-
-    // const handleDeleteChannel = () => {
-    //     // deleteProject(currentChannel.id);
-    // }
 
     return (
         <Fragment >

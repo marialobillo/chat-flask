@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import channelContext from '../../context/channels/channelContext';
 import messageContext from '../../context/messages/messageContext';
 import authContext from '../../context/authentication/authContext';

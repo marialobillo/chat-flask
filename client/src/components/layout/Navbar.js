@@ -9,6 +9,8 @@ const Nav = () => {
 
     useEffect( () => {
         getAuthenticatedUser();
+
+        //eslint-disable-next-line
     }, []);
 
     return (

@@ -7,7 +7,6 @@ import {
     ADD_MESSAGE,
     MESSAGE_VALIDATION,
     DELETE_MESSAGE,
-    MESSAGE_STATE,
     CURRENT_MESSAGE,
     UPDATE_MESSAGE,
     CLEAN_MESSAGE 
@@ -44,7 +43,7 @@ const MessageState = props => {
     // add a task
     const addMessage = async message => {
         try {
-            const response = await axiosClient.post('/api/messages', message);
+            await axiosClient.post('/api/messages', message);
             dispatch({
                 type: ADD_MESSAGE, 
                 payload: message
@@ -54,7 +53,7 @@ const MessageState = props => {
         }
     }
 
-    // Valida y muestra un error en caso de que sea necesario
+    // validate and show error
     const messageValidation = () => {
         dispatch({
             type: MESSAGE_VALIDATION

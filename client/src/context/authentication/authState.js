@@ -28,7 +28,6 @@ const AuthState = props => {
     const registerUser = async data => {
         try {
             const response = await axiosClient.post('/api/users', data);
-            const user = response.data.data;
             dispatch({
                 type: REGISTER_DONE,
                 payload: response.data.token
@@ -40,7 +39,6 @@ const AuthState = props => {
                 message: 'Username already exists. Please try again.', 
                 category: 'alert-danger'
             }
-
             dispatch({
                 type: REGISTER_FAIL,
                 payload: alert
