@@ -8,12 +8,16 @@ from .responses import not_found
 from .responses import bad_request
 from .responses import auth_response
 
+from .models import db
 from .models.user import User
 from .models.channel import Channel
 from .models.message import Message
 
+import json
+
 api_v1 = Blueprint('api', __name__, url_prefix='/api')
 environment = config['development']
+
 
 # endpoints for users
 @api_v1.route('/users', methods=['GET'])
@@ -122,7 +126,7 @@ def delete_user(id):
     if user.delete():
         return response(user.serialize())
     return bad_request()
-    
+
 
 # endpoints for channels
 @api_v1.route('/channels', methods=['GET'])
@@ -194,13 +198,59 @@ def get_message(id):
         return not_found()
     return response(message.serialize())
 
+# @api_v1.route('/bychannel/<channel_id>', methods=['GET'])
+# def get_messages_by_channel(channel_id):
+#     messages = Message.query.filter_by(channel_id=channel_id)
+#     if messages is None:
+#         return not_found()
+#     return response([message.serialize() for message in messages])
+
 @api_v1.route('/bychannel/<channel_id>', methods=['GET'])
 def get_messages_by_channel(channel_id):
-    messages = Message.query.filter_by(channel_id=channel_id)
-    if messages is None:
-        return not_found()
-    return response([message.serialize() for message in messages])
 
+    # messages = db.session.join(User).join(Message).filter(
+    #     Message.user_id == User.id
+    # ).filter(
+    #     Message.channel_id == channel_id
+    # ).all()
+
+    # messages = User.query.join(User.id == Message.user_id).add_columns(
+    #     User.username, Message.content, Message.created_at
+    # ).filter(User.id == Messsage.user_id).filter(
+    #     Message.channel_id == channel_id
+    # ).all()
+
+    # messages = db.session.query(Message).join(
+    #     User).filter (
+    #         User.id == Message.user_id
+    #     ).filter(
+    #         Message.channel_id == channel_id).all()
+
+    
+
+    messages = db.session.query(*User.__table__.columns + Message.__table__.columns).select_from(
+        User).join(
+        Message, User.id == Message.user_id).filter(
+        Message.channel_id == channel_id).with_entities(
+            User.username, Message.content, Message.created_at, Message.channel_id, Message.user_id).all()
+    i = 0
+    result = {}
+    for message in messages:
+        i = i + 1;
+        result[i] = {
+            "username": message[0],
+            "content": message[1],
+            "created_at": message[2],
+            "channel_id": message[3],
+            "user_id": message[4] 
+        }
+        print(result[i])
+
+    if result is None:
+        return not_found()
+
+    # return response([message.serialize() for message in messages])
+    return response(result)
 
 @api_v1.route('/messages', methods=['POST'])
 def create_message():

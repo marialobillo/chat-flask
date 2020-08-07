@@ -14,13 +14,22 @@ class Message(db.Model):
     created_at = db.Column(db.DateTime(), nullable=False, 
                 default=db.func.current_timestamp())
 
-    def serialize(self):
+    # def serialize(self):
+    #     return {
+    #         'id': self.id,
+    #         'user_id': self.user_id,
+    #         'channel_id': self.channel_id,
+    #         'content': self.content,
+    #         'created_at': self.created_at
+    #     }
+
+    def serialize(self, message):
         return {
-            'id': self.id,
-            'user_id': self.user_id,
-            'channel_id': self.channel_id,
-            'content': self.content,
-            'created_at': self.created_at
+           "username": message[0],
+            "content": message[1],
+            "created_at": message[2],
+            "channel_id": message[3],
+            "user_id": message[4] 
         }
 
     @classmethod 
