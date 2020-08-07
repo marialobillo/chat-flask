@@ -43,10 +43,10 @@ const MessageState = props => {
     // add a task
     const addMessage = async message => {
         try {
-            await axiosClient.post('/api/messages', message);
+            const response = await axiosClient.post('/api/messages', message);
             dispatch({
                 type: ADD_MESSAGE, 
-                payload: message
+                payload: response.data.data
             })
         } catch (error) {
             console.log(error);

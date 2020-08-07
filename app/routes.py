@@ -224,8 +224,6 @@ def create_message():
         return bad_request()
 
     message = Message.new(json['user_id'], json['channel_id'], json['content'])
-
-
     user = User.query.filter_by(id=json['user_id']).first() 
     username = user.username
 
