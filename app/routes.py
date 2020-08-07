@@ -13,7 +13,6 @@ from .models.user import User
 from .models.channel import Channel
 from .models.message import Message
 
-import json
 
 api_v1 = Blueprint('api', __name__, url_prefix='/api')
 environment = config['development']
@@ -198,43 +197,14 @@ def get_message(id):
         return not_found()
     return response(message.serialize())
 
-# @api_v1.route('/bychannel/<channel_id>', methods=['GET'])
-# def get_messages_by_channel(channel_id):
-#     messages = Message.query.filter_by(channel_id=channel_id)
-#     if messages is None:
-#         return not_found()
-#     return response([message.serialize() for message in messages])
-
 @api_v1.route('/bychannel/<channel_id>', methods=['GET'])
 def get_messages_by_channel(channel_id):
-
-    # messages = db.session.join(User).join(Message).filter(
-    #     Message.user_id == User.id
-    # ).filter(
-    #     Message.channel_id == channel_id
-    # ).all()
-
-    # messages = User.query.join(User.id == Message.user_id).add_columns(
-    #     User.username, Message.content, Message.created_at
-    # ).filter(User.id == Messsage.user_id).filter(
-    #     Message.channel_id == channel_id
-    # ).all()
-
-    # messages = db.session.query(Message).join(
-    #     User).filter (
-    #         User.id == Message.user_id
-    #     ).filter(
-    #         Message.channel_id == channel_id).all()
-
-    
-
     messages = db.session.query(*User.__table__.columns + Message.__table__.columns).select_from(
         User).join(
         Message, User.id == Message.user_id).filter(
         Message.channel_id == channel_id).with_entities(
-            User.username, Message.content, Message.created_at, Message.channel_id, Message.user_id).all()
+        User.username, Message.content, Message.created_at, Message.channel_id, Message.user_id).all()
     
-
     if messages is None:
         return not_found()
 
@@ -252,9 +222,6 @@ def create_message():
 
     if json.get('content') is None:
         return bad_request()
-
-    # if json.get('created_at') is None:
-    #     return bad_request()
 
     message = Message.new(json['user_id'], json['channel_id'], json['content'])
 
