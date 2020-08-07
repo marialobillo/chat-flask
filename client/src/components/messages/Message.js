@@ -1,5 +1,5 @@
 import React from 'react';
-// import axiosClient from '../../config/axios';
+import moment from 'moment';
 
 const Message = ({message}) => {
 
@@ -7,9 +7,10 @@ const Message = ({message}) => {
     return (
         <li key={message.id}>
            <div className="message">
-                <span> <strong>{message.username}: </strong></span>
+                <div className="message-date">{moment(message.created_at).fromNow()}</div>
+                <div className="message-username"> <strong>{message.username}: </strong></div>
                 <span>{message.content}</span>
-                <div>{message.created_at}</div>
+                
             </div>
         </li>
     );

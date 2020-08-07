@@ -202,7 +202,8 @@ def get_messages_by_channel(channel_id):
     messages = db.session.query(*User.__table__.columns + Message.__table__.columns).select_from(
         User).join(
         Message, User.id == Message.user_id).filter(
-        Message.channel_id == channel_id).with_entities(
+        Message.channel_id == channel_id
+        ).order_by(Message.created_at).with_entities(
         User.username, Message.content, Message.created_at, Message.channel_id, Message.user_id).all()
     
     if messages is None:
