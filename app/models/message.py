@@ -23,13 +23,13 @@ class Message(db.Model):
     #         'created_at': self.created_at
     #     }
 
-    def serialize(self, message):
+    def serialize(self):
         return {
-           "username": message[0],
-            "content": message[1],
-            "created_at": message[2],
-            "channel_id": message[3],
-            "user_id": message[4] 
+           "username": self[0],
+            "content": self[1],
+            "created_at": self[2],
+            "channel_id": self[3],
+            "user_id": self[4] 
         }
 
     @classmethod 
@@ -55,6 +55,15 @@ class Message(db.Model):
 
     def __str__(self):
         return self.content
+
+    def to_serialize( message):
+        return {
+           "username": message[0],
+            "content": message[1],
+            "created_at": message[2],
+            "channel_id": message[3],
+            "user_id": message[4] 
+        }
 
 
 

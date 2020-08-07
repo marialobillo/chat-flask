@@ -233,24 +233,12 @@ def get_messages_by_channel(channel_id):
         Message, User.id == Message.user_id).filter(
         Message.channel_id == channel_id).with_entities(
             User.username, Message.content, Message.created_at, Message.channel_id, Message.user_id).all()
-    i = 0
-    result = {}
-    for message in messages:
-        i = i + 1;
-        result[i] = {
-            "username": message[0],
-            "content": message[1],
-            "created_at": message[2],
-            "channel_id": message[3],
-            "user_id": message[4] 
-        }
-        print(result[i])
+    
 
-    if result is None:
+    if messages is None:
         return not_found()
 
-    # return response([message.serialize() for message in messages])
-    return response(result)
+    return response([Message.to_serialize(message) for message in messages])
 
 @api_v1.route('/messages', methods=['POST'])
 def create_message():
