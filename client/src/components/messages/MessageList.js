@@ -24,7 +24,7 @@ const MessageList = () => {
             </div>
             <ul className="panel">
                 {messageschannel.length === 0 ? 
-                    (<li className="message"><p>There is no messages</p></li>)
+                    (<li className="alert alert-success"><p>There is no messages</p></li>)
                     : 
                         <div >{messageschannel.map(message => (
                                <Message

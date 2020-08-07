@@ -225,8 +225,12 @@ def create_message():
 
     message = Message.new(json['user_id'], json['channel_id'], json['content'])
 
+
+    user = User.query.filter_by(id=json['user_id']).first() 
+    username = user.username
+
     if message.save():
-        return response(message.serialize())
+        return response(message.serialize(username))
 
     return bad_request()
 
