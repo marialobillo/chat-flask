@@ -94,3 +94,8 @@ ul{
   color: white;
   border-bottom: 1px solid white;
 }
+
+.list-title{
+  margin: 250px  90px;
+  width: 100%;
+}

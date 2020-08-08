@@ -13,7 +13,7 @@ const MessageList = () => {
     const { messageschannel } = messagesContext;
 
     // if not current project
-    if(!channel) return <h3>Select a Channel from the sidebar</h3>;
+    if(!channel) return <h3 className="list-title">Select a Channel from the sidebar</h3>;
 
     const [currentChannel] = channel;
 
