@@ -25,7 +25,7 @@ const Nav = () => {
 
                     {user ? 
                         <li className="nav-item">
-                            <span className="nav-link" href="#">Hi, { user.username }</span>
+                            <span className="nav-link" href="#">Welcome, { user.username }</span>
                         </li>
                                         
                     : null}
@@ -33,10 +33,10 @@ const Nav = () => {
                     
                 </ul>
 
-                <ul className="navbar-nav mr-auto right">
+                <ul className="navbar-nav right">
 
 
-                    <li className="nav-item right">
+                    <li className="nav-item">
                         <button 
                             className="btn btn-blank text-white"
                             onClick={() => logoutUser()}                            
