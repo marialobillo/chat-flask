@@ -21,10 +21,10 @@ const Channel = ({ channel }) => {
         <li>
             <button
                 type="button"
-                className="btn btn-light"
+                className="channel-item"
                 onClick={ () => selectChannel(channel.id) }
             >
-                {channel.name}
+                #{channel.name}
             </button>
         </li>
 
