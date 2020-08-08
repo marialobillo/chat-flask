@@ -11,7 +11,7 @@ const Message = ({message}) => {
                 <span className="message-username"> 
                     <strong>{message.username} </strong></span>
                 <span className="message-date">
-                    {moment(message.created_at).fromNow()}
+                    {moment(message.created_at).format('h:mm a, Do MMMM YYYY')}
                 </span>
 
                 </div>
