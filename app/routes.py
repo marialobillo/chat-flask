@@ -204,7 +204,8 @@ def get_messages_by_channel(channel_id):
         Message, User.id == Message.user_id).filter(
         Message.channel_id == channel_id
         ).order_by(Message.created_at).with_entities(
-        User.username, Message.content, Message.created_at, Message.channel_id, Message.user_id).all()
+        User.username, Message.content, Message.created_at, Message.channel_id, Message.user_id
+        ).all()
     
     if messages is None:
         return not_found()
