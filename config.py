@@ -6,8 +6,7 @@ class Config:
 
 class ProductionConfig(Config):
     DEBUG = True 
-    SQLALCHEMY_DATABASE_URI = 'postgres://fwrexvfiwqlyzv:6550521c9eee3c6b02a2caf3ace720755a6df285d2b185bd9279c80afa5f9ec4@ec2-54-247-71-245.eu-west-1.compute.amazonaws.com:5432/d1tpl1p3kl8fe
-'
+    SQLALCHEMY_DATABASE_URI = ''
     SQLALCHEMY_TRACK_MODIFICATIONS = False 
     SECRET_WORD = 'theredcatisblue'
 
